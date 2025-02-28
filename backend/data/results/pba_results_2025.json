@@ -1,0 +1,3710 @@
+[
+  {
+    "name": "PBA Delaware Classic PTQ",
+    "url": "https://www.pba.com/tournaments/2025/pba-delaware-classic-ptq",
+    "start_date": "2025-01-20T12:00:00Z",
+    "end_date": null,
+    "center": {
+      "name": "PBA Delaware Classic PTQ",
+      "location": "875 N. Broad St. Middletown DE 19709 United States"
+    },
+    "pattern": {
+      "name": "Bat",
+      "length": null,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "John Furey",
+        "hometown": "Howell, N.J.",
+        "match_play_record": "'--'",
+        "average": "232.29",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "2",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "match_play_record": "'--'",
+        "average": "231.86",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "3",
+        "name": "Michael Davidson",
+        "hometown": "Versailles, Ohio",
+        "match_play_record": "'--'",
+        "average": "229.71",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "4",
+        "name": "Santtu Tahvanainen",
+        "hometown": "Finland",
+        "match_play_record": "'--'",
+        "average": "229.29",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "5",
+        "name": "Nick Pate",
+        "hometown": "Inver Grove Heights, Minn.",
+        "match_play_record": "'--'",
+        "average": "224.86",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "6",
+        "name": "Trevor Roberts",
+        "hometown": "Crystal River, Fla.",
+        "match_play_record": "'--'",
+        "average": "224.71",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "7",
+        "name": "David Northouse",
+        "hometown": "Bryon Center, Mich.",
+        "match_play_record": "'--'",
+        "average": "224.71",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "8",
+        "name": "Anthony Neuer",
+        "hometown": "Lewisburg, Pa.",
+        "match_play_record": "'--'",
+        "average": "224.00",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "9",
+        "name": "Seth Lehman",
+        "hometown": "Crystal Lake, Ill.",
+        "match_play_record": "'--'",
+        "average": "222.14",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "10",
+        "name": "Sheldon McKinney",
+        "hometown": "Burnsville, N.C.",
+        "match_play_record": "'--'",
+        "average": "221.43",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "11",
+        "name": "Joe Paluszek",
+        "hometown": "Bensalem, Pa.",
+        "match_play_record": "'--'",
+        "average": "221.14",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "12",
+        "name": "Dallas Leong",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "220.86",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "13",
+        "name": "Nathan Ruest-Lajoie",
+        "hometown": "T\u00e9miscouata-Sur-Le-Lac, Quebec",
+        "match_play_record": "'--'",
+        "average": "220.86",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "14",
+        "name": "Tom Sorce",
+        "hometown": "Blasdell, N.Y.",
+        "match_play_record": "'--'",
+        "average": "220.29",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "15",
+        "name": "Zac Tackett",
+        "hometown": "Huntington, Ind.",
+        "match_play_record": "'--'",
+        "average": "220.14",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "16",
+        "name": "Will Vidulich",
+        "hometown": "Budd Lake, N.J.",
+        "match_play_record": "'--'",
+        "average": "219.71",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "17",
+        "name": "Cody Shoemaker",
+        "hometown": "Hanover, Pa.",
+        "match_play_record": "'--'",
+        "average": "219.14",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "18",
+        "name": "Peter Fox",
+        "hometown": "West Hartford, Conn.",
+        "match_play_record": "'--'",
+        "average": "219.00",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "19",
+        "name": "Samuel DeWitt III",
+        "hometown": "Pittsburgh, Pa.",
+        "match_play_record": "'--'",
+        "average": "218.43",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "20",
+        "name": "Robert Shine",
+        "hometown": "Yonkers, N.Y.",
+        "match_play_record": "'--'",
+        "average": "217.57",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "21",
+        "name": "Nicholas Brown",
+        "hometown": "Virginia Beach, Va.",
+        "match_play_record": "'--'",
+        "average": "217.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "22",
+        "name": "Michael Mirabile",
+        "hometown": "Coram, N.Y.",
+        "match_play_record": "'--'",
+        "average": "217.29",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "23",
+        "name": "Joshua McCandless",
+        "hometown": "Midlothian, VA",
+        "match_play_record": "'--'",
+        "average": "217.00",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "24",
+        "name": "Lance Morris",
+        "hometown": "Beattyville, Ky.",
+        "match_play_record": "'--'",
+        "average": "216.43",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "25",
+        "name": "T.J. Rock",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "216.00",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "26",
+        "name": "Thomas McNeal",
+        "hometown": "Seattle, Wash.",
+        "match_play_record": "'--'",
+        "average": "215.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "27",
+        "name": "William Little",
+        "hometown": "Fulton, Md.",
+        "match_play_record": "'--'",
+        "average": "215.14",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "28",
+        "name": "Ethan Fiore",
+        "hometown": "Tampa, Fla.",
+        "match_play_record": "'--'",
+        "average": "214.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "29",
+        "name": "Matt Wozney",
+        "hometown": "Milford, Del.",
+        "match_play_record": "'--'",
+        "average": "214.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "30",
+        "name": "Bryan Bourget",
+        "hometown": "Woonsocket, R.I.",
+        "match_play_record": "'--'",
+        "average": "213.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "31",
+        "name": "Jean Perez",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "209.86",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "32",
+        "name": "Gregory Francis",
+        "hometown": "Bristow, VA",
+        "match_play_record": "'--'",
+        "average": "206.43",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "33",
+        "name": "Brad Miller",
+        "hometown": "Lees Summit, Mo.",
+        "match_play_record": "'--'",
+        "average": "205.43",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Gary Haines",
+        "hometown": "Babylon, N.Y.",
+        "match_play_record": "'--'",
+        "average": "203.29",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "Adam Baer",
+        "hometown": "York Springs, Pa.",
+        "match_play_record": "'--'",
+        "average": "202.86",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Mason Edmondson",
+        "hometown": "Amarillo, Texas",
+        "match_play_record": "'--'",
+        "average": "202.71",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "Aj Wolstenholme",
+        "hometown": "Trevose, PA",
+        "match_play_record": "'--'",
+        "average": "200.29",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Nate Garcia",
+        "hometown": "Port St. Lucie, Fla.",
+        "match_play_record": "'--'",
+        "average": "198.29",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Arturo Quintero",
+        "hometown": "Mexico",
+        "match_play_record": "'--'",
+        "average": "198.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "Trevor Ashby",
+        "hometown": "Springfield, W. Va.",
+        "match_play_record": "'--'",
+        "average": "197.57",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Allex Zieg",
+        "hometown": "Placentia, Calif.",
+        "match_play_record": "'--'",
+        "average": "197.14",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "Jason Stadtler",
+        "hometown": "Lafayette, N.J.",
+        "match_play_record": "'--'",
+        "average": "196.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Kenny Gasser Jr",
+        "hometown": "Willingboro, N.J.",
+        "match_play_record": "'--'",
+        "average": "196.00",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "Scott Lebeau",
+        "hometown": "Peyton, Colo.",
+        "match_play_record": "'--'",
+        "average": "196.00",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "Hunter Machin",
+        "hometown": "Dundalk,MD",
+        "match_play_record": "'--'",
+        "average": "195.86",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Todd Sigeti",
+        "hometown": "Lancaster, Pa.",
+        "match_play_record": "'--'",
+        "average": "192.71",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Andrew Lazarchick",
+        "hometown": "Brick, N.J.",
+        "match_play_record": "'--'",
+        "average": "192.43",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Christopher Dean",
+        "hometown": "Carneys Point, NJ",
+        "match_play_record": "'--'",
+        "average": "191.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "49",
+        "name": "Brian Robinson",
+        "hometown": "Morgantown, W. Va.",
+        "match_play_record": "'--'",
+        "average": "191.14",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "50",
+        "name": "Talon Clemons",
+        "hometown": "Pottstown, Pa.",
+        "match_play_record": "'--'",
+        "average": "190.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "51",
+        "name": "Rj Golisano",
+        "hometown": "Rochester NY",
+        "match_play_record": "'--'",
+        "average": "186.86",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "52",
+        "name": "Mark Ferrara",
+        "hometown": "Massapequa Park, NY",
+        "match_play_record": "'--'",
+        "average": "186.71",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "53",
+        "name": "George King",
+        "hometown": "Palmyra, N.J.",
+        "match_play_record": "'--'",
+        "average": "186.71",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "54",
+        "name": "Adam Travis",
+        "hometown": "Cockeysville, Md.",
+        "match_play_record": "'--'",
+        "average": "185.57",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "55",
+        "name": "Todd Kelly",
+        "hometown": "Sicklerville NJ",
+        "match_play_record": "'--'",
+        "average": "183.00",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "56",
+        "name": "Odell Jones",
+        "hometown": "Philadelphia",
+        "match_play_record": "'--'",
+        "average": "181.14",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "57",
+        "name": "Tarahmes Nuiriankh",
+        "hometown": "Odenton, MD",
+        "match_play_record": "'--'",
+        "average": "174.86",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "58",
+        "name": "Thomas Griffith",
+        "hometown": "Mickleton, N.J.",
+        "match_play_record": "'--'",
+        "average": "174.71",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "59",
+        "name": "Brett Clark",
+        "hometown": "Temecula, California",
+        "match_play_record": "'--'",
+        "average": "170.86",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "60",
+        "name": "James Seibert",
+        "hometown": "Cherry Hill, NJ",
+        "match_play_record": "'--'",
+        "average": "166.29",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "61",
+        "name": "George Dougherty II",
+        "hometown": "Newark, Del.",
+        "match_play_record": "'--'",
+        "average": "159.29",
+        "points": "10.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "62",
+        "name": "Bruce Comunale",
+        "hometown": "Hammonton, N.J.",
+        "match_play_record": "'--'",
+        "average": "156.43",
+        "points": "10.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "63",
+        "name": "Jimmie Allen",
+        "hometown": "Nashville, Tenn.",
+        "match_play_record": "'--'",
+        "average": "154.29",
+        "points": "10.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "64",
+        "name": "Kyle Clement",
+        "hometown": "Dafter, Mich.",
+        "match_play_record": "'--'",
+        "average": "183.00",
+        "points": "10.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "PBA Delaware Classic",
+    "url": "https://www.pba.com/tournaments/2025/pba-delaware-classic",
+    "start_date": "2025-01-20T12:00:00Z",
+    "end_date": "2025-01-25T12:00:00Z",
+    "center": {
+      "name": "PBA Delaware Classic",
+      "location": "875 N. Broad St. Middletown DE 19709 United States"
+    },
+    "pattern": {
+      "name": "Cheetah",
+      "length": 35,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "Graham Fach",
+        "hometown": "Urbana, Ohio",
+        "match_play_record": "'3-0-0'",
+        "average": "243.30",
+        "points": "5,000.00",
+        "earnings": "30000.00"
+      },
+      {
+        "position": "2",
+        "name": "Jakob Butturff",
+        "hometown": "Tempe, Ariz.",
+        "match_play_record": "'0-1-0'",
+        "average": "234.84",
+        "points": "3,000.00",
+        "earnings": "18000.00"
+      },
+      {
+        "position": "3",
+        "name": "Nick Pate",
+        "hometown": "Inver Grove Heights, Minn.",
+        "match_play_record": "'0-1-0'",
+        "average": "230.89",
+        "points": "2,300.00",
+        "earnings": "13000.00"
+      },
+      {
+        "position": "4",
+        "name": "Michael Davidson",
+        "hometown": "Versailles, Ohio",
+        "match_play_record": "'1-1-0'",
+        "average": "241.19",
+        "points": "1,900.00",
+        "earnings": "10000.00"
+      },
+      {
+        "position": "5",
+        "name": "AJ Johnson",
+        "hometown": "Oswego, Ill.",
+        "match_play_record": "'0-1-0'",
+        "average": "240.19",
+        "points": "1,700.00",
+        "earnings": "9000.00"
+      },
+      {
+        "position": "6",
+        "name": "Ryan Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'6-7-0'",
+        "average": "229.65",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "7",
+        "name": "Justin Knowles",
+        "hometown": "Okemos, Mich.",
+        "match_play_record": "'5-6-0'",
+        "average": "236.62",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "8",
+        "name": "Trevor Roberts",
+        "hometown": "Crystal River, Fla.",
+        "match_play_record": "'10-8-0'",
+        "average": "231.31",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "9",
+        "name": "Cam Crowe",
+        "hometown": "Orland Park, Ill.",
+        "match_play_record": "'1-4-0'",
+        "average": "240.70",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "10",
+        "name": "Tomas K\u00e4yhk\u00f6",
+        "hometown": "Finland",
+        "match_play_record": "'3-4-0'",
+        "average": "242.52",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "11",
+        "name": "Kyle Troup",
+        "hometown": "Taylorsville, N.C.",
+        "match_play_record": "'1-4-0'",
+        "average": "230.00",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "12",
+        "name": "Andrew Anderson",
+        "hometown": "Holly, Mich.",
+        "match_play_record": "'3-4-0'",
+        "average": "243.68",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "13",
+        "name": "Matt Ogle",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'7-7-0'",
+        "average": "232.28",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "14",
+        "name": "EJ Tackett",
+        "hometown": "Bluffton, Ind.",
+        "match_play_record": "'7-6-0'",
+        "average": "234.48",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "15",
+        "name": "Brandon Runk",
+        "hometown": "Milton, Pa.",
+        "match_play_record": "'5-6-0'",
+        "average": "230.79",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "16",
+        "name": "Keven Williams",
+        "hometown": "Roseville, CA",
+        "match_play_record": "'6-7-0'",
+        "average": "227.39",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "17",
+        "name": "Chris Via",
+        "hometown": "Springfield, Ohio",
+        "match_play_record": "'0-4-0'",
+        "average": "240.41",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "18",
+        "name": "Tom Smallwood",
+        "hometown": "Saginaw, Mich.",
+        "match_play_record": "'3-4-0'",
+        "average": "233.52",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "19",
+        "name": "Bill O'Neill",
+        "hometown": "Langhorne, Pa.",
+        "match_play_record": "'1-4-0'",
+        "average": "233.65",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "20",
+        "name": "BJ Moore",
+        "hometown": "Greensburg, Pa.",
+        "match_play_record": "'2-4-0'",
+        "average": "236.29",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "21",
+        "name": "Sam Cooley",
+        "hometown": "Australia",
+        "match_play_record": "'2-4-0'",
+        "average": "226.54",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "22",
+        "name": "Nate Purches",
+        "hometown": "Fond du Lac, Wis.",
+        "match_play_record": "'2-4-0'",
+        "average": "233.33",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "23",
+        "name": "Hayden Stippich",
+        "hometown": "McKean, Pa.",
+        "match_play_record": "'3-4-0'",
+        "average": "231.24",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "24",
+        "name": "Marshall Kent",
+        "hometown": "Yakima, Wash.",
+        "match_play_record": "'2-4-0'",
+        "average": "229.46",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "25",
+        "name": "Stu Williams",
+        "hometown": "Pflugerville, Texas",
+        "match_play_record": "'0-0-0'",
+        "average": "232.94",
+        "points": "570.00",
+        "earnings": "2900.00"
+      },
+      {
+        "position": "26",
+        "name": "Andrew Hall",
+        "hometown": "Westborough, Mass.",
+        "match_play_record": "'--'",
+        "average": "232.78",
+        "points": "550.00",
+        "earnings": "2800.00"
+      },
+      {
+        "position": "27",
+        "name": "Fran\u00e7ois Lavoie",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "232.39",
+        "points": "530.00",
+        "earnings": "2750.00"
+      },
+      {
+        "position": "28",
+        "name": "David \"Boog\" Krol",
+        "hometown": "Nixa, Mo.",
+        "match_play_record": "'--'",
+        "average": "232.06",
+        "points": "510.00",
+        "earnings": "2700.00"
+      },
+      {
+        "position": "29",
+        "name": "Eric Jones",
+        "hometown": "Edmond, Okla.",
+        "match_play_record": "'--'",
+        "average": "231.78",
+        "points": "490.00",
+        "earnings": "2650.00"
+      },
+      {
+        "position": "30",
+        "name": "Zach Wilkins",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "231.56",
+        "points": "470.00",
+        "earnings": "2600.00"
+      },
+      {
+        "position": "31",
+        "name": "Chris Sloan",
+        "hometown": "Ireland",
+        "match_play_record": "'--'",
+        "average": "231.44",
+        "points": "450.00",
+        "earnings": "2550.00"
+      },
+      {
+        "position": "32",
+        "name": "Nathan Bohr",
+        "hometown": "Austin, Texas",
+        "match_play_record": "'--'",
+        "average": "231.39",
+        "points": "430.00",
+        "earnings": "2500.00"
+      },
+      {
+        "position": "33",
+        "name": "Bailey Mavrick",
+        "hometown": "Peru, Ind.",
+        "match_play_record": "'--'",
+        "average": "231.22",
+        "points": "410.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Tom Daugherty",
+        "hometown": "Riverview, Fla.",
+        "match_play_record": "'--'",
+        "average": "230.94",
+        "points": "400.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "Sean Rash",
+        "hometown": "Montgomery, Ill.",
+        "match_play_record": "'--'",
+        "average": "230.72",
+        "points": "390.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Kris Prather",
+        "hometown": "Plainfield, Ill.",
+        "match_play_record": "'--'",
+        "average": "230.33",
+        "points": "380.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "Jason Belmonte",
+        "hometown": "Australia",
+        "match_play_record": "'--'",
+        "average": "229.50",
+        "points": "370.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Dom Barrett",
+        "hometown": "Great Bentley, England",
+        "match_play_record": "'--'",
+        "average": "228.44",
+        "points": "360.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Gary Faulkner Jr.",
+        "hometown": "Memphis, Tenn.",
+        "match_play_record": "'--'",
+        "average": "228.17",
+        "points": "350.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "Thomas Larsen",
+        "hometown": "Denmark",
+        "match_play_record": "'--'",
+        "average": "227.94",
+        "points": "340.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Matt Sanders",
+        "hometown": "Evansville, Ind.",
+        "match_play_record": "'--'",
+        "average": "226.67",
+        "points": "330.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "Tim Foy Jr.",
+        "hometown": "Seaford, Del.",
+        "match_play_record": "'--'",
+        "average": "226.61",
+        "points": "320.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Packy Hanrahan",
+        "hometown": "Wichita, Kan.",
+        "match_play_record": "'--'",
+        "average": "226.56",
+        "points": "310.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "DJ Archer",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'--'",
+        "average": "226.44",
+        "points": "300.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "Shawn Maldonado",
+        "hometown": "Houston",
+        "match_play_record": "'--'",
+        "average": "226.22",
+        "points": "290.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Chris Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'--'",
+        "average": "225.94",
+        "points": "280.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Tommy Jones",
+        "hometown": "Simpsonville, S.C.",
+        "match_play_record": "'--'",
+        "average": "225.89",
+        "points": "270.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Deo Benard",
+        "hometown": "Roanoke, Texas",
+        "match_play_record": "'--'",
+        "average": "225.78",
+        "points": "260.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "49",
+        "name": "Jesper Svensson",
+        "hometown": "Sweden",
+        "match_play_record": "'--'",
+        "average": "225.56",
+        "points": "250.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "50",
+        "name": "Darren Tang",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "225.22",
+        "points": "240.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "51",
+        "name": "Sean Lavery-Spahr",
+        "hometown": "Pasadena, Texas",
+        "match_play_record": "'--'",
+        "average": "225.00",
+        "points": "225.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "52",
+        "name": "Cristian Azcona",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "225.00",
+        "points": "225.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "53",
+        "name": "Chase Nadeau",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "223.83",
+        "points": "210.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "54",
+        "name": "Kim Bolleby",
+        "hometown": "Sweden",
+        "match_play_record": "'--'",
+        "average": "222.83",
+        "points": "200.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "55",
+        "name": "Patrick Dombrowski",
+        "hometown": "Parma, Ohio",
+        "match_play_record": "'--'",
+        "average": "222.00",
+        "points": "190.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "56",
+        "name": "Nate Stubler",
+        "hometown": "LaSalle, Ill.",
+        "match_play_record": "'--'",
+        "average": "221.94",
+        "points": "175.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "57",
+        "name": "Jake Peters",
+        "hometown": "Henderson, Nev.",
+        "match_play_record": "'--'",
+        "average": "221.94",
+        "points": "175.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "58",
+        "name": "Jason Sterner",
+        "hometown": "Rochester, N.Y.",
+        "match_play_record": "'--'",
+        "average": "221.28",
+        "points": "160.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "59",
+        "name": "AJ Chapman",
+        "hometown": "Manchester, Iowa",
+        "match_play_record": "'--'",
+        "average": "220.94",
+        "points": "150.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "60",
+        "name": "Richie Teece",
+        "hometown": "Aldershot, Hampshire",
+        "match_play_record": "'--'",
+        "average": "219.17",
+        "points": "140.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "61",
+        "name": "Anthony Simonsen",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "219.06",
+        "points": "130.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "62",
+        "name": "Matt Russo",
+        "hometown": "Ballwin, Missouri",
+        "match_play_record": "'--'",
+        "average": "218.61",
+        "points": "120.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "63",
+        "name": "Mitch Hup\u00e9",
+        "hometown": "Winnipeg, MB",
+        "match_play_record": "'--'",
+        "average": "218.22",
+        "points": "110.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "64",
+        "name": "Santtu Tahvanainen",
+        "hometown": "Finland",
+        "match_play_record": "'--'",
+        "average": "217.50",
+        "points": "100.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "65",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "match_play_record": "'--'",
+        "average": "215.50",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "66",
+        "name": "Kevin McCune",
+        "hometown": "Munster, Ind.",
+        "match_play_record": "'--'",
+        "average": "214.67",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "67",
+        "name": "Deeronn Booker",
+        "hometown": "Anaheim, Calif.",
+        "match_play_record": "'--'",
+        "average": "211.17",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "68",
+        "name": "John Furey",
+        "hometown": "Howell, N.J.",
+        "match_play_record": "'--'",
+        "average": "211.06",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "69",
+        "name": "Liz Johnson",
+        "hometown": "Niagara Falls, N.Y.",
+        "match_play_record": "'--'",
+        "average": "207.89",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "70",
+        "name": "Ronnie Russell",
+        "hometown": "Noblesville, Ind.",
+        "match_play_record": "'--'",
+        "average": "206.56",
+        "points": "90.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "PBA Owens Illinois Classic",
+    "url": "https://www.pba.com/tournaments/2025/pba-owens-illinois-classic",
+    "start_date": "2025-02-03T12:00:00Z",
+    "end_date": "2025-02-08T12:00:00Z",
+    "center": {
+      "name": "PBA Owens Illinois Classic",
+      "location": "316 Center Dr. Vernon Hills IL 60061 United States"
+    },
+    "pattern": {
+      "name": "Carmen Salvino",
+      "length": 42,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "Santtu Tahvanainen",
+        "hometown": "Finland",
+        "match_play_record": "'1-0-0'",
+        "average": "231.71",
+        "points": "5,000.00",
+        "earnings": "30000.00"
+      },
+      {
+        "position": "2",
+        "name": "Chris Via",
+        "hometown": "Springfield, Ohio",
+        "match_play_record": "'1-1-0'",
+        "average": "234.08",
+        "points": "3,000.00",
+        "earnings": "18000.00"
+      },
+      {
+        "position": "3",
+        "name": "Tim Foy Jr.",
+        "hometown": "Seaford, Del.",
+        "match_play_record": "'2-1-0'",
+        "average": "223.53",
+        "points": "2,300.00",
+        "earnings": "13000.00"
+      },
+      {
+        "position": "4",
+        "name": "Sean Rash",
+        "hometown": "Montgomery, Ill.",
+        "match_play_record": "'0-1-0'",
+        "average": "228.66",
+        "points": "1,900.00",
+        "earnings": "10000.00"
+      },
+      {
+        "position": "5",
+        "name": "Matt Ogle",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'0-1-0'",
+        "average": "232.19",
+        "points": "1,700.00",
+        "earnings": "9000.00"
+      },
+      {
+        "position": "6",
+        "name": "Jason Belmonte",
+        "hometown": "Australia",
+        "match_play_record": "'10-3-1'",
+        "average": "231.09",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "7",
+        "name": "Eric Jones",
+        "hometown": "Edmond, Okla.",
+        "match_play_record": "'9-8-1'",
+        "average": "221.58",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "8",
+        "name": "Hayden Stippich",
+        "hometown": "McKean, Pa.",
+        "match_play_record": "'9-8-0'",
+        "average": "225.20",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "9",
+        "name": "Bill O'Neill",
+        "hometown": "Langhorne, Pa.",
+        "match_play_record": "'2-4-0'",
+        "average": "227.67",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "10",
+        "name": "Graham Fach",
+        "hometown": "Urbana, Ohio",
+        "match_play_record": "'2-4-0'",
+        "average": "231.88",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "11",
+        "name": "Kris Prather",
+        "hometown": "Plainfield, Ill.",
+        "match_play_record": "'3-4-0'",
+        "average": "229.08",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "12",
+        "name": "Ryan Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'1-4-0'",
+        "average": "227.65",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "13",
+        "name": "Shawn Maldonado",
+        "hometown": "Houston",
+        "match_play_record": "'0-4-0'",
+        "average": "224.50",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "14",
+        "name": "Nate Stubler",
+        "hometown": "LaSalle, Ill.",
+        "match_play_record": "'3-4-0'",
+        "average": "228.40",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "15",
+        "name": "David \"Boog\" Krol",
+        "hometown": "Nixa, Mo.",
+        "match_play_record": "'4-7-0'",
+        "average": "213.72",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "16",
+        "name": "Tommy Jones",
+        "hometown": "Simpsonville, S.C.",
+        "match_play_record": "'7-6-1'",
+        "average": "219.09",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "17",
+        "name": "Jesper Svensson",
+        "hometown": "Sweden",
+        "match_play_record": "'3-4-0'",
+        "average": "225.88",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "18",
+        "name": "Anthony Neuer",
+        "hometown": "Lewisburg, Pa.",
+        "match_play_record": "'2-4-1'",
+        "average": "216.76",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "19",
+        "name": "Bailey Mavrick",
+        "hometown": "Peru, Ind.",
+        "match_play_record": "'1-4-0'",
+        "average": "224.22",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "20",
+        "name": "Jordan Malott",
+        "hometown": "Ft. Wayne, Ind.",
+        "match_play_record": "'2-3-1'",
+        "average": "222.13",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "21",
+        "name": "Wes Malott",
+        "hometown": "Fort Wayne, Ind.",
+        "match_play_record": "'3-4-0'",
+        "average": "214.52",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "22",
+        "name": "Matt Sanders",
+        "hometown": "Evansville, Ind.",
+        "match_play_record": "'2-4-0'",
+        "average": "222.92",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "23",
+        "name": "Dom Barrett",
+        "hometown": "Great Bentley, England",
+        "match_play_record": "'0-4-0'",
+        "average": "220.82",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "24",
+        "name": "Jakob Butturff",
+        "hometown": "Tempe, Ariz.",
+        "match_play_record": "'0-0-0'",
+        "average": "222.56",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "25",
+        "name": "Patrick Dombrowski",
+        "hometown": "Parma, Ohio",
+        "match_play_record": "'0-0-0'",
+        "average": "222.22",
+        "points": "570.00",
+        "earnings": "2900.00"
+      },
+      {
+        "position": "26",
+        "name": "Tom Smallwood",
+        "hometown": "Saginaw, Mich.",
+        "match_play_record": "'--'",
+        "average": "222.17",
+        "points": "550.00",
+        "earnings": "2800.00"
+      },
+      {
+        "position": "27",
+        "name": "Tomas K\u00e4yhk\u00f6",
+        "hometown": "Finland",
+        "match_play_record": "'--'",
+        "average": "222.11",
+        "points": "530.00",
+        "earnings": "2750.00"
+      },
+      {
+        "position": "28",
+        "name": "Mitch Hup\u00e9",
+        "hometown": "Winnipeg, MB",
+        "match_play_record": "'--'",
+        "average": "221.89",
+        "points": "510.00",
+        "earnings": "2700.00"
+      },
+      {
+        "position": "29",
+        "name": "EJ Tackett",
+        "hometown": "Bluffton, Ind.",
+        "match_play_record": "'--'",
+        "average": "221.83",
+        "points": "490.00",
+        "earnings": "2650.00"
+      },
+      {
+        "position": "30",
+        "name": "Fran\u00e7ois Lavoie",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "221.78",
+        "points": "470.00",
+        "earnings": "2600.00"
+      },
+      {
+        "position": "31",
+        "name": "Thomas McNeal",
+        "hometown": "Seattle, Wash.",
+        "match_play_record": "'--'",
+        "average": "221.67",
+        "points": "450.00",
+        "earnings": "2550.00"
+      },
+      {
+        "position": "32",
+        "name": "Chris Sloan",
+        "hometown": "Ireland",
+        "match_play_record": "'--'",
+        "average": "221.61",
+        "points": "430.00",
+        "earnings": "2500.00"
+      },
+      {
+        "position": "33",
+        "name": "Sam Cooley",
+        "hometown": "Australia",
+        "match_play_record": "'--'",
+        "average": "221.56",
+        "points": "410.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Brad Miller",
+        "hometown": "Lees Summit, Mo.",
+        "match_play_record": "'--'",
+        "average": "221.28",
+        "points": "395.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "AJ Chapman",
+        "hometown": "Manchester, Iowa",
+        "match_play_record": "'--'",
+        "average": "221.28",
+        "points": "395.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Jason Sterner",
+        "hometown": "Rochester, N.Y.",
+        "match_play_record": "'--'",
+        "average": "220.83",
+        "points": "380.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "Kyle Troup",
+        "hometown": "Taylorsville, N.C.",
+        "match_play_record": "'--'",
+        "average": "220.33",
+        "points": "370.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Sean Lavery-Spahr",
+        "hometown": "Pasadena, Texas",
+        "match_play_record": "'--'",
+        "average": "219.89",
+        "points": "360.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Andrew Anderson",
+        "hometown": "Holly, Mich.",
+        "match_play_record": "'--'",
+        "average": "219.61",
+        "points": "345.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "DJ Archer",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'--'",
+        "average": "219.61",
+        "points": "345.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Nathan Bohr",
+        "hometown": "Austin, Texas",
+        "match_play_record": "'--'",
+        "average": "219.44",
+        "points": "330.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "Anthony Simonsen",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "218.94",
+        "points": "320.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Richie Teece",
+        "hometown": "Aldershot, Hampshire",
+        "match_play_record": "'--'",
+        "average": "218.72",
+        "points": "310.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "Packy Hanrahan",
+        "hometown": "Wichita, Kan.",
+        "match_play_record": "'--'",
+        "average": "218.50",
+        "points": "300.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "BJ Moore",
+        "hometown": "Greensburg, Pa.",
+        "match_play_record": "'--'",
+        "average": "218.33",
+        "points": "290.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Tom Daugherty",
+        "hometown": "Riverview, Fla.",
+        "match_play_record": "'--'",
+        "average": "217.94",
+        "points": "280.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Stu Williams",
+        "hometown": "Pflugerville, Texas",
+        "match_play_record": "'--'",
+        "average": "217.39",
+        "points": "270.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Nate Purches",
+        "hometown": "Fond du Lac, Wis.",
+        "match_play_record": "'--'",
+        "average": "216.89",
+        "points": "260.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "49",
+        "name": "Justin Knowles",
+        "hometown": "Okemos, Mich.",
+        "match_play_record": "'--'",
+        "average": "216.78",
+        "points": "250.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "50",
+        "name": "Zach Wilkins",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "216.72",
+        "points": "240.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "51",
+        "name": "AJ Johnson",
+        "hometown": "Oswego, Ill.",
+        "match_play_record": "'--'",
+        "average": "216.28",
+        "points": "230.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "52",
+        "name": "Chris Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'--'",
+        "average": "216.11",
+        "points": "220.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "53",
+        "name": "Kevin McCune",
+        "hometown": "Munster, Ind.",
+        "match_play_record": "'--'",
+        "average": "215.89",
+        "points": "210.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "54",
+        "name": "Darren Tang",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "214.72",
+        "points": "200.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "55",
+        "name": "Jake Peters",
+        "hometown": "Henderson, Nev.",
+        "match_play_record": "'--'",
+        "average": "214.61",
+        "points": "190.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "56",
+        "name": "JR Raymond",
+        "hometown": "Clinton Twp., Mich.",
+        "match_play_record": "'--'",
+        "average": "214.50",
+        "points": "175.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "57",
+        "name": "Cody Shoemaker",
+        "hometown": "Hanover, Pa.",
+        "match_play_record": "'--'",
+        "average": "214.50",
+        "points": "175.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "58",
+        "name": "Kyle Sherman",
+        "hometown": "O'Fallon, Mo.",
+        "match_play_record": "'--'",
+        "average": "214.06",
+        "points": "160.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "59",
+        "name": "Deo Benard",
+        "hometown": "Roanoke, Texas",
+        "match_play_record": "'--'",
+        "average": "213.06",
+        "points": "150.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "60",
+        "name": "Chase Nadeau",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "212.39",
+        "points": "140.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "61",
+        "name": "Will Clark",
+        "hometown": "Montgomery, Ill.",
+        "match_play_record": "'--'",
+        "average": "212.06",
+        "points": "130.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "62",
+        "name": "Frank Snodgrass",
+        "hometown": "Adrian, MI",
+        "match_play_record": "'--'",
+        "average": "212.00",
+        "points": "120.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "63",
+        "name": "Cam Crowe",
+        "hometown": "Orland Park, Ill.",
+        "match_play_record": "'--'",
+        "average": "211.61",
+        "points": "110.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "64",
+        "name": "Andrew Hall",
+        "hometown": "Westborough, Mass.",
+        "match_play_record": "'--'",
+        "average": "211.44",
+        "points": "100.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "65",
+        "name": "Cristian Azcona",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "211.17",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "66",
+        "name": "Deeronn Booker",
+        "hometown": "Anaheim, Calif.",
+        "match_play_record": "'--'",
+        "average": "210.50",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "67",
+        "name": "Kim Bolleby",
+        "hometown": "Sweden",
+        "match_play_record": "'--'",
+        "average": "210.17",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "68",
+        "name": "Thomas Larsen",
+        "hometown": "Denmark",
+        "match_play_record": "'--'",
+        "average": "209.72",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "69",
+        "name": "Brandon Runk",
+        "hometown": "Milton, Pa.",
+        "match_play_record": "'--'",
+        "average": "209.39",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "70",
+        "name": "Marshall Kent",
+        "hometown": "Yakima, Wash.",
+        "match_play_record": "'--'",
+        "average": "208.89",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "71",
+        "name": "Matt Russo",
+        "hometown": "Ballwin, Missouri",
+        "match_play_record": "'--'",
+        "average": "208.28",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "72",
+        "name": "Nick Pate",
+        "hometown": "Inver Grove Heights, Minn.",
+        "match_play_record": "'--'",
+        "average": "208.17",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "73",
+        "name": "Jace Meyer",
+        "hometown": "Monticello, Iowa",
+        "match_play_record": "'--'",
+        "average": "207.06",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "74",
+        "name": "Ronnie Russell",
+        "hometown": "Noblesville, Ind.",
+        "match_play_record": "'--'",
+        "average": "204.89",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "75",
+        "name": "Keven Williams",
+        "hometown": "Roseville, CA",
+        "match_play_record": "'--'",
+        "average": "204.83",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "76",
+        "name": "Seth Lehman",
+        "hometown": "Crystal Lake, Ill.",
+        "match_play_record": "'--'",
+        "average": "204.33",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "77",
+        "name": "Gary Faulkner Jr.",
+        "hometown": "Memphis, Tenn.",
+        "match_play_record": "'--'",
+        "average": "204.33",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "78",
+        "name": "David Northouse",
+        "hometown": "Bryon Center, Mich.",
+        "match_play_record": "'--'",
+        "average": "201.28",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "79",
+        "name": "Zac Tackett",
+        "hometown": "Huntington, Ind.",
+        "match_play_record": "'--'",
+        "average": "198.94",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "80",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "match_play_record": "'--'",
+        "average": "198.56",
+        "points": "90.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "PBA Owens Illinois Classic PTQ",
+    "url": "https://www.pba.com/tournaments/2025/pba-owens-illinois-classic-ptq",
+    "start_date": "2025-02-03T12:00:00Z",
+    "end_date": null,
+    "center": {
+      "name": "PBA Owens Illinois Classic PTQ",
+      "location": "316 Center Dr Vernon Hills IL 60061 United States"
+    },
+    "pattern": {
+      "name": "Mike Aulby",
+      "length": 39,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "Thomas McNeal",
+        "hometown": "Seattle, Wash.",
+        "match_play_record": "'--'",
+        "average": "229.43",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "2",
+        "name": "Frank Snodgrass",
+        "hometown": "Adrian, MI",
+        "match_play_record": "'--'",
+        "average": "226.86",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "3",
+        "name": "David Northouse",
+        "hometown": "Bryon Center, Mich.",
+        "match_play_record": "'--'",
+        "average": "225.57",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "4",
+        "name": "Seth Lehman",
+        "hometown": "Crystal Lake, Ill.",
+        "match_play_record": "'--'",
+        "average": "225.43",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "5",
+        "name": "Will Clark",
+        "hometown": "Montgomery, Ill.",
+        "match_play_record": "'--'",
+        "average": "224.57",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "6",
+        "name": "Jace Meyer",
+        "hometown": "Monticello, Iowa",
+        "match_play_record": "'--'",
+        "average": "224.43",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "7",
+        "name": "Ryan Burton",
+        "hometown": "Michigan City, Ind.",
+        "match_play_record": "'--'",
+        "average": "223.86",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "8",
+        "name": "Kyle Ponzo",
+        "hometown": "Chandler, AZ",
+        "match_play_record": "'--'",
+        "average": "223.86",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "9",
+        "name": "Nathan Ruest-Lajoie",
+        "hometown": "T\u00e9miscouata-Sur-Le-Lac, Quebec",
+        "match_play_record": "'--'",
+        "average": "222.29",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "10",
+        "name": "Samuel DeWitt III",
+        "hometown": "Pittsburgh, Pa.",
+        "match_play_record": "'--'",
+        "average": "221.86",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "11",
+        "name": "Aj Wolstenholme",
+        "hometown": "Trevose, PA",
+        "match_play_record": "'--'",
+        "average": "221.29",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "12",
+        "name": "Zeke Bayt",
+        "hometown": "Westerville, Ohio",
+        "match_play_record": "'--'",
+        "average": "218.29",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "13",
+        "name": "Timmy Tan",
+        "hometown": "Malaysia",
+        "match_play_record": "'--'",
+        "average": "217.14",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "14",
+        "name": "Michael Mirabile",
+        "hometown": "Coram, N.Y.",
+        "match_play_record": "'--'",
+        "average": "216.86",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "15",
+        "name": "Michael Davidson",
+        "hometown": "Versailles, Ohio",
+        "match_play_record": "'--'",
+        "average": "216.57",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "16",
+        "name": "T.J. Rock",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "216.43",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "17",
+        "name": "Dallas Leong",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "216.43",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "18",
+        "name": "Bryan Bourget",
+        "hometown": "Woonsocket, R.I.",
+        "match_play_record": "'--'",
+        "average": "216.00",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "19",
+        "name": "Jorge Rodriguez",
+        "hometown": "Yauco",
+        "match_play_record": "'--'",
+        "average": "215.57",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "20",
+        "name": "Joshua McCandless",
+        "hometown": "Midlothian, VA",
+        "match_play_record": "'--'",
+        "average": "214.57",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "21",
+        "name": "Arturo Quintero",
+        "hometown": "Mexico",
+        "match_play_record": "'--'",
+        "average": "214.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "22",
+        "name": "Brandon Biondo",
+        "hometown": "Carpentersville, Ill.",
+        "match_play_record": "'--'",
+        "average": "214.00",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "23",
+        "name": "Patrick Girard",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "213.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "24",
+        "name": "Jean Perez",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "213.00",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "25",
+        "name": "Ryan Zagar",
+        "hometown": "Racine, Wis.",
+        "match_play_record": "'--'",
+        "average": "212.29",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "26",
+        "name": "Tim Gruendler",
+        "hometown": "St. Louis, Mo.",
+        "match_play_record": "'--'",
+        "average": "210.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "27",
+        "name": "Brian Schamber",
+        "hometown": "Ruidoso, N.M.",
+        "match_play_record": "'--'",
+        "average": "207.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "28",
+        "name": "Darin Bloomquist",
+        "hometown": "Rhinelander, Wis.",
+        "match_play_record": "'--'",
+        "average": "207.43",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "29",
+        "name": "Ethan Fiore",
+        "hometown": "Tampa, Fla.",
+        "match_play_record": "'--'",
+        "average": "206.86",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "30",
+        "name": "Trevor Roberts",
+        "hometown": "Crystal River, Fla.",
+        "match_play_record": "'--'",
+        "average": "206.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "31",
+        "name": "Nate Garcia",
+        "hometown": "Port St. Lucie, Fla.",
+        "match_play_record": "'--'",
+        "average": "206.43",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "32",
+        "name": "Rj Golisano",
+        "hometown": "Rochester NY",
+        "match_play_record": "'--'",
+        "average": "206.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "33",
+        "name": "Mason Edmondson",
+        "hometown": "Amarillo, Texas",
+        "match_play_record": "'--'",
+        "average": "204.00",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Brian Robinson",
+        "hometown": "Morgantown, W. Va.",
+        "match_play_record": "'--'",
+        "average": "199.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "Ryan Lopano",
+        "hometown": "Little River, S.C.",
+        "match_play_record": "'--'",
+        "average": "196.57",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Killian Kilpatrick",
+        "hometown": "Erie, Pa.",
+        "match_play_record": "'--'",
+        "average": "194.29",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "Scott McIntire Jr.",
+        "hometown": "Parma, Ohio",
+        "match_play_record": "'--'",
+        "average": "194.00",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Callum Borck",
+        "hometown": "Perth, Austraillia",
+        "match_play_record": "'--'",
+        "average": "193.86",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Will Vidulich",
+        "hometown": "Budd Lake, N.J.",
+        "match_play_record": "'--'",
+        "average": "191.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "Trenton Holz",
+        "hometown": "Milwaukee, Wis.",
+        "match_play_record": "'--'",
+        "average": "191.00",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Frank Miller",
+        "hometown": "Gilberts, IL",
+        "match_play_record": "'--'",
+        "average": "190.14",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "Derek Graham",
+        "hometown": "Glenview, IL",
+        "match_play_record": "'--'",
+        "average": "190.00",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Jeremy Dennison",
+        "hometown": "Lockport illinois",
+        "match_play_record": "'--'",
+        "average": "189.71",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "Kyle Clement",
+        "hometown": "Dafter, Mich.",
+        "match_play_record": "'--'",
+        "average": "189.57",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "Joshua Green",
+        "hometown": "Baton Rouge, Louisiana",
+        "match_play_record": "'--'",
+        "average": "188.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Scott Lebeau",
+        "hometown": "Peyton, Colo.",
+        "match_play_record": "'--'",
+        "average": "187.57",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Trevor Ashby",
+        "hometown": "Springfield, W. Va.",
+        "match_play_record": "'--'",
+        "average": "187.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Maxwell Sloan",
+        "hometown": "Chicago, Illinois",
+        "match_play_record": "'--'",
+        "average": "186.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "49",
+        "name": "Daniel Spore",
+        "hometown": "Portage, IN",
+        "match_play_record": "'--'",
+        "average": "186.29",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "50",
+        "name": "Stephen Hoehnen",
+        "hometown": "Sussex, Wis.",
+        "match_play_record": "'--'",
+        "average": "184.43",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "51",
+        "name": "Christopher Watson",
+        "hometown": "Crest Hill, Ill.",
+        "match_play_record": "'--'",
+        "average": "180.43",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "52",
+        "name": "Lance Morris",
+        "hometown": "Beattyville, Ky.",
+        "match_play_record": "'--'",
+        "average": "179.00",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "53",
+        "name": "Germaine Tyler",
+        "hometown": "Bolingbrook, Ill.",
+        "match_play_record": "'--'",
+        "average": "177.29",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "54",
+        "name": "Christopher Dower",
+        "hometown": "Cary, Ill.",
+        "match_play_record": "'--'",
+        "average": "176.71",
+        "points": "15.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "55",
+        "name": "Blake Johnson",
+        "hometown": "East Grand Forks",
+        "match_play_record": "'--'",
+        "average": "170.86",
+        "points": "15.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "PBA Pete Weber Missouri Classic",
+    "url": "https://www.pba.com/tournaments/2025/pba-pete-weber-missouri-classic",
+    "start_date": "2025-02-11T12:00:00Z",
+    "end_date": "2025-02-16T12:00:00Z",
+    "center": {
+      "name": "PBA Pete Weber Missouri Classic",
+      "location": "1625 South Enterprise Springfield MO 65807 United States"
+    },
+    "pattern": {
+      "name": "Info",
+      "length": null,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "EJ Tackett",
+        "hometown": "Bluffton, Ind.",
+        "match_play_record": "'1-0-0'",
+        "average": "233.07",
+        "points": "5,000.00",
+        "earnings": "30000.00"
+      },
+      {
+        "position": "2",
+        "name": "Dom Barrett",
+        "hometown": "Great Bentley, England",
+        "match_play_record": "'3-1-0'",
+        "average": "222.33",
+        "points": "3,000.00",
+        "earnings": "18000.00"
+      },
+      {
+        "position": "3",
+        "name": "Tim Foy Jr.",
+        "hometown": "Seaford, Del.",
+        "match_play_record": "'0-1-0'",
+        "average": "229.39",
+        "points": "2,300.00",
+        "earnings": "13000.00"
+      },
+      {
+        "position": "4",
+        "name": "Timmy Tan",
+        "hometown": "Malaysia",
+        "match_play_record": "'0-1-0'",
+        "average": "219.21",
+        "points": "1,900.00",
+        "earnings": "10000.00"
+      },
+      {
+        "position": "5",
+        "name": "Ryan Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'0-1-0'",
+        "average": "222.43",
+        "points": "1,700.00",
+        "earnings": "9000.00"
+      },
+      {
+        "position": "6",
+        "name": "Kyle Troup",
+        "hometown": "Taylorsville, N.C.",
+        "match_play_record": "'7-6-0'",
+        "average": "230.16",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "7",
+        "name": "Andrew Anderson",
+        "hometown": "Holly, Mich.",
+        "match_play_record": "'8-4-1'",
+        "average": "220.48",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "8",
+        "name": "Tomas K\u00e4yhk\u00f6",
+        "hometown": "Finland",
+        "match_play_record": "'10-7-0'",
+        "average": "217.77",
+        "points": "1,490.00",
+        "earnings": "7500.00"
+      },
+      {
+        "position": "9",
+        "name": "Kevin McCune",
+        "hometown": "Munster, Ind.",
+        "match_play_record": "'1-4-1'",
+        "average": "222.58",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "10",
+        "name": "AJ Johnson",
+        "hometown": "Oswego, Ill.",
+        "match_play_record": "'1-4-0'",
+        "average": "218.70",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "11",
+        "name": "Bill O'Neill",
+        "hometown": "Langhorne, Pa.",
+        "match_play_record": "'2-4-0'",
+        "average": "221.29",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "12",
+        "name": "Chris Via",
+        "hometown": "Springfield, Ohio",
+        "match_play_record": "'2-4-0'",
+        "average": "217.21",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "13",
+        "name": "Zach Wilkins",
+        "hometown": "Canada",
+        "match_play_record": "'6-4-0'",
+        "average": "224.54",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "14",
+        "name": "Tom Daugherty",
+        "hometown": "Riverview, Fla.",
+        "match_play_record": "'5-6-0'",
+        "average": "220.10",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "15",
+        "name": "Jake Peters",
+        "hometown": "Henderson, Nev.",
+        "match_play_record": "'6-7-0'",
+        "average": "213.87",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "16",
+        "name": "Shawn Maldonado",
+        "hometown": "Houston",
+        "match_play_record": "'5-6-1'",
+        "average": "215.87",
+        "points": "1,160.00",
+        "earnings": "5500.00"
+      },
+      {
+        "position": "17",
+        "name": "Sean Lavery-Spahr",
+        "hometown": "Pasadena, Texas",
+        "match_play_record": "'1-4-0'",
+        "average": "216.30",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "18",
+        "name": "Richie Teece",
+        "hometown": "Aldershot, Hampshire",
+        "match_play_record": "'3-3-1'",
+        "average": "223.64",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "19",
+        "name": "Bailey Mavrick",
+        "hometown": "Peru, Ind.",
+        "match_play_record": "'0-4-0'",
+        "average": "215.09",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "20",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "match_play_record": "'2-4-1'",
+        "average": "211.76",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "21",
+        "name": "Andrew Hall",
+        "hometown": "Westborough, Mass.",
+        "match_play_record": "'3-4-0'",
+        "average": "213.16",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "22",
+        "name": "Sean Rash",
+        "hometown": "Montgomery, Ill.",
+        "match_play_record": "'2-4-0'",
+        "average": "217.25",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "23",
+        "name": "Sam Cooley",
+        "hometown": "Australia",
+        "match_play_record": "'0-4-0'",
+        "average": "213.32",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "24",
+        "name": "AJ Chapman",
+        "hometown": "Manchester, Iowa",
+        "match_play_record": "'3-4-0'",
+        "average": "213.92",
+        "points": "750.00",
+        "earnings": "4000.00"
+      },
+      {
+        "position": "25",
+        "name": "Tommy Jones",
+        "hometown": "Simpsonville, S.C.",
+        "match_play_record": "'0-0-0'",
+        "average": "214.94",
+        "points": "570.00",
+        "earnings": "2900.00"
+      },
+      {
+        "position": "26",
+        "name": "Michael Davidson",
+        "hometown": "Versailles, Ohio",
+        "match_play_record": "'--'",
+        "average": "214.72",
+        "points": "540.00",
+        "earnings": "2775.00"
+      },
+      {
+        "position": "27",
+        "name": "Tom Smallwood",
+        "hometown": "Saginaw, Mich.",
+        "match_play_record": "'--'",
+        "average": "214.72",
+        "points": "540.00",
+        "earnings": "2775.00"
+      },
+      {
+        "position": "28",
+        "name": "Thomas Larsen",
+        "hometown": "Denmark",
+        "match_play_record": "'--'",
+        "average": "214.50",
+        "points": "510.00",
+        "earnings": "2700.00"
+      },
+      {
+        "position": "29",
+        "name": "Jakob Butturff",
+        "hometown": "Tempe, Ariz.",
+        "match_play_record": "'--'",
+        "average": "213.83",
+        "points": "490.00",
+        "earnings": "2650.00"
+      },
+      {
+        "position": "30",
+        "name": "BJ Moore",
+        "hometown": "Greensburg, Pa.",
+        "match_play_record": "'--'",
+        "average": "211.89",
+        "points": "470.00",
+        "earnings": "2600.00"
+      },
+      {
+        "position": "31",
+        "name": "Dallas Leong",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "211.00",
+        "points": "440.00",
+        "earnings": "2525.00"
+      },
+      {
+        "position": "32",
+        "name": "Packy Hanrahan",
+        "hometown": "Wichita, Kan.",
+        "match_play_record": "'--'",
+        "average": "211.00",
+        "points": "440.00",
+        "earnings": "2525.00"
+      },
+      {
+        "position": "33",
+        "name": "Zach Weidman",
+        "hometown": "Indianapolis, Ind.",
+        "match_play_record": "'--'",
+        "average": "210.22",
+        "points": "410.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Matt Ogle",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'--'",
+        "average": "210.17",
+        "points": "400.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "Tim Gruendler",
+        "hometown": "St. Louis, Mo.",
+        "match_play_record": "'--'",
+        "average": "209.11",
+        "points": "390.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Nathan Bohr",
+        "hometown": "Austin, Texas",
+        "match_play_record": "'--'",
+        "average": "209.00",
+        "points": "380.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "David Northouse",
+        "hometown": "Bryon Center, Mich.",
+        "match_play_record": "'--'",
+        "average": "208.39",
+        "points": "370.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Matt Sanders",
+        "hometown": "Evansville, Ind.",
+        "match_play_record": "'--'",
+        "average": "208.33",
+        "points": "360.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Deeronn Booker",
+        "hometown": "Anaheim, Calif.",
+        "match_play_record": "'--'",
+        "average": "208.17",
+        "points": "350.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "Anthony Simonsen",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "207.72",
+        "points": "340.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Chris Barnes",
+        "hometown": "Denton, Texas",
+        "match_play_record": "'--'",
+        "average": "207.61",
+        "points": "330.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "David \"Boog\" Krol",
+        "hometown": "Nixa, Mo.",
+        "match_play_record": "'--'",
+        "average": "207.28",
+        "points": "320.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Nate Purches",
+        "hometown": "Fond du Lac, Wis.",
+        "match_play_record": "'--'",
+        "average": "207.11",
+        "points": "310.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "Marshall Kent",
+        "hometown": "Yakima, Wash.",
+        "match_play_record": "'--'",
+        "average": "206.89",
+        "points": "300.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "Chase Nadeau",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "206.22",
+        "points": "290.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Justin Knowles",
+        "hometown": "Okemos, Mich.",
+        "match_play_record": "'--'",
+        "average": "206.06",
+        "points": "275.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Stu Williams",
+        "hometown": "Pflugerville, Texas",
+        "match_play_record": "'--'",
+        "average": "206.06",
+        "points": "275.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Patrick Dombrowski",
+        "hometown": "Parma, Ohio",
+        "match_play_record": "'--'",
+        "average": "205.56",
+        "points": "260.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "49",
+        "name": "Nick Pate",
+        "hometown": "Inver Grove Heights, Minn.",
+        "match_play_record": "'--'",
+        "average": "204.94",
+        "points": "250.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "50",
+        "name": "Santtu Tahvanainen",
+        "hometown": "Finland",
+        "match_play_record": "'--'",
+        "average": "203.72",
+        "points": "240.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "51",
+        "name": "Ethan Fiore",
+        "hometown": "Tampa, Fla.",
+        "match_play_record": "'--'",
+        "average": "203.44",
+        "points": "230.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "52",
+        "name": "Mitch Hup\u00e9",
+        "hometown": "Winnipeg, MB",
+        "match_play_record": "'--'",
+        "average": "203.39",
+        "points": "220.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "53",
+        "name": "Kim Bolleby",
+        "hometown": "Sweden",
+        "match_play_record": "'--'",
+        "average": "202.94",
+        "points": "210.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "54",
+        "name": "Matt Russo",
+        "hometown": "Ballwin, Missouri",
+        "match_play_record": "'--'",
+        "average": "202.89",
+        "points": "200.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "55",
+        "name": "Gary Faulkner Jr.",
+        "hometown": "Memphis, Tenn.",
+        "match_play_record": "'--'",
+        "average": "202.83",
+        "points": "190.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "56",
+        "name": "Kris Prather",
+        "hometown": "Plainfield, Ill.",
+        "match_play_record": "'--'",
+        "average": "202.72",
+        "points": "180.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "57",
+        "name": "Chris Sloan",
+        "hometown": "Ireland",
+        "match_play_record": "'--'",
+        "average": "202.56",
+        "points": "170.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "58",
+        "name": "Robert Shine",
+        "hometown": "Yonkers, N.Y.",
+        "match_play_record": "'--'",
+        "average": "202.39",
+        "points": "160.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "59",
+        "name": "Blake Demore",
+        "hometown": "Springfield, Mo.",
+        "match_play_record": "'--'",
+        "average": "202.17",
+        "points": "150.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "60",
+        "name": "DJ Archer",
+        "hometown": "Louisville, Ky.",
+        "match_play_record": "'--'",
+        "average": "200.61",
+        "points": "140.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "61",
+        "name": "Cam Crowe",
+        "hometown": "Orland Park, Ill.",
+        "match_play_record": "'--'",
+        "average": "200.17",
+        "points": "130.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "62",
+        "name": "Fran\u00e7ois Lavoie",
+        "hometown": "Canada",
+        "match_play_record": "'--'",
+        "average": "200.06",
+        "points": "120.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "63",
+        "name": "Eric Jones",
+        "hometown": "Edmond, Okla.",
+        "match_play_record": "'--'",
+        "average": "199.89",
+        "points": "110.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "64",
+        "name": "Brandon Runk",
+        "hometown": "Milton, Pa.",
+        "match_play_record": "'--'",
+        "average": "199.72",
+        "points": "100.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "65",
+        "name": "Jason Sterner",
+        "hometown": "Rochester, N.Y.",
+        "match_play_record": "'--'",
+        "average": "199.44",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "66",
+        "name": "Keven Williams",
+        "hometown": "Roseville, CA",
+        "match_play_record": "'--'",
+        "average": "199.44",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "67",
+        "name": "Casey Murphy",
+        "hometown": "Nixa, Mo.",
+        "match_play_record": "'--'",
+        "average": "199.39",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "68",
+        "name": "Darren Tang",
+        "hometown": "Las Vegas",
+        "match_play_record": "'--'",
+        "average": "198.11",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "69",
+        "name": "Cristian Azcona",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "197.78",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "70",
+        "name": "Nate Stubler",
+        "hometown": "LaSalle, Ill.",
+        "match_play_record": "'--'",
+        "average": "193.83",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "71",
+        "name": "Deo Benard",
+        "hometown": "Roanoke, Texas",
+        "match_play_record": "'--'",
+        "average": "193.39",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "72",
+        "name": "Jesper Svensson",
+        "hometown": "Sweden",
+        "match_play_record": "'--'",
+        "average": "192.61",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "73",
+        "name": "Ronnie Russell",
+        "hometown": "Noblesville, Ind.",
+        "match_play_record": "'--'",
+        "average": "192.50",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "74",
+        "name": "Graham Fach",
+        "hometown": "Urbana, Ohio",
+        "match_play_record": "'--'",
+        "average": "189.33",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "75",
+        "name": "Hayden Stippich",
+        "hometown": "McKean, Pa.",
+        "match_play_record": "'--'",
+        "average": "188.89",
+        "points": "90.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "76",
+        "name": "Andrew Cline",
+        "hometown": "Valley Park, MO",
+        "match_play_record": "'--'",
+        "average": "188.89",
+        "points": "0.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "PBA Pete Weber Missouri Classic PTQ",
+    "url": "https://www.pba.com/tournaments/2025/pba-pete-weber-missouri-classic-ptq",
+    "start_date": "2025-02-11T12:00:00Z",
+    "end_date": null,
+    "center": {
+      "name": "PBA Pete Weber Missouri Classic PTQ",
+      "location": "1625 South Enterprise Springfield MO 65807 United States"
+    },
+    "pattern": {
+      "name": "Info",
+      "length": null,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "1",
+        "name": "Ethan Fiore",
+        "hometown": "Tampa, Fla.",
+        "match_play_record": "'--'",
+        "average": "231.43",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "2",
+        "name": "Nick Pate",
+        "hometown": "Inver Grove Heights, Minn.",
+        "match_play_record": "'--'",
+        "average": "223.71",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "3",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "match_play_record": "'--'",
+        "average": "217.86",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "4",
+        "name": "Blake Demore",
+        "hometown": "Springfield, Mo.",
+        "match_play_record": "'--'",
+        "average": "215.14",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "5",
+        "name": "Timmy Tan",
+        "hometown": "Malaysia",
+        "match_play_record": "'--'",
+        "average": "214.29",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "6",
+        "name": "Robert Shine",
+        "hometown": "Yonkers, N.Y.",
+        "match_play_record": "'--'",
+        "average": "212.71",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "7",
+        "name": "Tim Gruendler",
+        "hometown": "St. Louis, Mo.",
+        "match_play_record": "'--'",
+        "average": "211.57",
+        "points": "0.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "8",
+        "name": "Ildemaro Ruiz",
+        "hometown": "Venezuela",
+        "match_play_record": "'--'",
+        "average": "211.29",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "9",
+        "name": "Bryan Bourget",
+        "hometown": "Woonsocket, R.I.",
+        "match_play_record": "'--'",
+        "average": "210.71",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "10",
+        "name": "Joshua Green",
+        "hometown": "Baton Rouge, Louisiana",
+        "match_play_record": "'--'",
+        "average": "208.71",
+        "points": "40.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "11",
+        "name": "Jason Britain",
+        "hometown": "Springfield, MO",
+        "match_play_record": "'--'",
+        "average": "207.86",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "12",
+        "name": "Mason Edmondson",
+        "hometown": "Amarillo, Texas",
+        "match_play_record": "'--'",
+        "average": "206.71",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "13",
+        "name": "T.J. Rock",
+        "hometown": "Las Vegas, Nev.",
+        "match_play_record": "'--'",
+        "average": "206.71",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "14",
+        "name": "Brent Boho",
+        "hometown": "Colgate, Wis.",
+        "match_play_record": "'--'",
+        "average": "203.00",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "15",
+        "name": "Jorge Rodriguez",
+        "hometown": "Yauco",
+        "match_play_record": "'--'",
+        "average": "202.29",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "16",
+        "name": "Zac Tackett",
+        "hometown": "Huntington, Ind.",
+        "match_play_record": "'--'",
+        "average": "202.00",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "17",
+        "name": "Benjamin Martinez",
+        "hometown": "Guadalajara/ Mexico",
+        "match_play_record": "'--'",
+        "average": "201.71",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "18",
+        "name": "Nathan Ruest-Lajoie",
+        "hometown": "T\u00e9miscouata-Sur-Le-Lac, Quebec",
+        "match_play_record": "'--'",
+        "average": "200.71",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "19",
+        "name": "Jace Meyer",
+        "hometown": "Monticello, Iowa",
+        "match_play_record": "'--'",
+        "average": "200.43",
+        "points": "35.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "20",
+        "name": "Thomas McNeal",
+        "hometown": "Seattle, Wash.",
+        "match_play_record": "'--'",
+        "average": "200.29",
+        "points": "33.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "21",
+        "name": "Joshua McCandless",
+        "hometown": "Midlothian, VA",
+        "match_play_record": "'--'",
+        "average": "200.29",
+        "points": "33.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "22",
+        "name": "Christopher Dower",
+        "hometown": "Cary, Ill.",
+        "match_play_record": "'--'",
+        "average": "199.86",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "23",
+        "name": "Brian Robinson",
+        "hometown": "Morgantown, W. Va.",
+        "match_play_record": "'--'",
+        "average": "199.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "24",
+        "name": "Darin Bloomquist",
+        "hometown": "Rhinelander, Wis.",
+        "match_play_record": "'--'",
+        "average": "196.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "25",
+        "name": "Rj Golisano",
+        "hometown": "Rochester NY",
+        "match_play_record": "'--'",
+        "average": "196.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "26",
+        "name": "Randy Hawks",
+        "hometown": "Balch Springs, Texas",
+        "match_play_record": "'--'",
+        "average": "195.71",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "27",
+        "name": "Zachary Cook",
+        "hometown": "Peyton, Colo.",
+        "match_play_record": "'--'",
+        "average": "194.86",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "28",
+        "name": "Brad Miller",
+        "hometown": "Lees Summit, Mo.",
+        "match_play_record": "'--'",
+        "average": "192.29",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "29",
+        "name": "Seth Lehman",
+        "hometown": "Crystal Lake, Ill.",
+        "match_play_record": "'--'",
+        "average": "190.57",
+        "points": "30.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "30",
+        "name": "Nolan Nash",
+        "hometown": "Greenwood",
+        "match_play_record": "'--'",
+        "average": "189.00",
+        "points": "28.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "31",
+        "name": "Kyle Ponzo",
+        "hometown": "Chandler, AZ",
+        "match_play_record": "'--'",
+        "average": "189.00",
+        "points": "28.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "32",
+        "name": "Scott Lebeau",
+        "hometown": "Peyton, Colo.",
+        "match_play_record": "'--'",
+        "average": "187.29",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "33",
+        "name": "Trevor Ashby",
+        "hometown": "Springfield, W. Va.",
+        "match_play_record": "'--'",
+        "average": "186.71",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "34",
+        "name": "Jean Perez",
+        "hometown": "Puerto Rico",
+        "match_play_record": "'--'",
+        "average": "186.57",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "35",
+        "name": "Andrew Bonin",
+        "hometown": "Greenwood, AR",
+        "match_play_record": "'--'",
+        "average": "186.43",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "36",
+        "name": "Brenden Williams",
+        "hometown": "Springfield, Mo.",
+        "match_play_record": "'--'",
+        "average": "186.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "37",
+        "name": "Zach Rhoades",
+        "hometown": "Lafayette, Ind.",
+        "match_play_record": "'--'",
+        "average": "185.57",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "38",
+        "name": "Callum Borck",
+        "hometown": "Perth, Austraillia",
+        "match_play_record": "'--'",
+        "average": "185.14",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "39",
+        "name": "Blake Reiger",
+        "hometown": "Grafton, WI.",
+        "match_play_record": "'--'",
+        "average": "183.57",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "40",
+        "name": "Johnny Quach",
+        "hometown": "Houston",
+        "match_play_record": "'--'",
+        "average": "180.00",
+        "points": "25.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "41",
+        "name": "Dan Loose",
+        "hometown": "Edmond, OK",
+        "match_play_record": "'--'",
+        "average": "178.86",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "42",
+        "name": "John Kirwin",
+        "hometown": "Grain Valley, MO",
+        "match_play_record": "'--'",
+        "average": "178.57",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "43",
+        "name": "Allan Smith",
+        "hometown": "Copperas Cove, Texas",
+        "match_play_record": "'--'",
+        "average": "177.71",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "44",
+        "name": "Landon Blaize Ison",
+        "hometown": "Johnson City",
+        "match_play_record": "'--'",
+        "average": "177.00",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "45",
+        "name": "Brandon Mens Sr",
+        "hometown": "Olive Branch, MS",
+        "match_play_record": "'--'",
+        "average": "172.43",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "46",
+        "name": "Brent Dowell",
+        "hometown": "Raymore, Mo.",
+        "match_play_record": "'--'",
+        "average": "171.00",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "47",
+        "name": "Christopher Watson",
+        "hometown": "Crest Hill, Ill.",
+        "match_play_record": "'--'",
+        "average": "163.14",
+        "points": "20.00",
+        "earnings": "0.00"
+      },
+      {
+        "position": "48",
+        "name": "Curtis Dorrell",
+        "hometown": "Arkansas",
+        "match_play_record": "'--'",
+        "average": "150.43",
+        "points": "20.00",
+        "earnings": "0.00"
+      }
+    ]
+  },
+  {
+    "name": "Mike Aulby PBA Nevada Classic PTQ",
+    "url": "https://www.pba.com/tournaments/2025/mike-aulby-pba-nevada-classic-ptq",
+    "start_date": "2025-02-25T12:00:00Z",
+    "end_date": null,
+    "center": {
+      "name": "Mike Aulby PBA Nevada Classic PTQ",
+      "location": "1855 E. Lincoln Way Sparks NV 89434 United States"
+    },
+    "pattern": {
+      "name": "Info",
+      "length": 39,
+      "volume": null,
+      "ratio": null
+    },
+    "results": [
+      {
+        "position": "",
+        "squad": "A",
+        "name": "Dallas Leong",
+        "hometown": "Las Vegas, Nev.",
+        "score": "",
+        "average": "0.00",
+        "+/-_200": ""
+      },
+      {
+        "position": "",
+        "squad": "A",
+        "name": "Ryan Burton",
+        "hometown": "Michigan City, Ind.",
+        "score": "",
+        "average": "0.00",
+        "+/-_200": ""
+      },
+      {
+        "position": "",
+        "squad": "A",
+        "name": "Ethan Fiore",
+        "hometown": "Tampa, Fla.",
+        "score": "",
+        "average": "0.00",
+        "+/-_200": ""
+      },
+      {
+        "position": "",
+        "squad": "A",
+        "name": "Alec Keplinger",
+        "hometown": "Angola, Ind.",
+        "score": "",
+        "average": "0.00",
+        "+/-_200": ""
+      },
+      {
+        "position": "",
+        "squad": "A",
+        "name": "Rj Golisano",
+        "hometown": "Rochester NY",
+        "score": "",
+        "average": "0.00",
+        "+/-_200": ""
+      }
+    ]
+  }
+]
