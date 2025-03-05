@@ -20,10 +20,6 @@ This application integrates web scraping, data analysis, and interactive visuali
 
 ## Screenshots
 
-### Oil Pattern Visualization
-![Pattern Visualization](screenshots/pattern.png)
-*Screenshot: Interactive oil pattern visualization showing oil distribution*
-
 ### Bowler Performance Analysis
 ![Performance Analysis](screenshots/performance.png)
 *Screenshot: Detailed bowler performance metrics across different pattern types*
@@ -42,8 +38,8 @@ This application integrates web scraping, data analysis, and interactive visuali
 ### Backend Setup
 1. Clone the repository
    ```
-   git clone https://github.com/yourusername/pba-tournament-analysis.git
-   cd pba-tournament-analysis
+   git clone https://github.com/DarrenJOlson/pba-analysis-app.git
+   cd pba-analysis-app
    ```
 
 2. Create and activate a virtual environment
