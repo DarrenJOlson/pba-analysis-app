@@ -222,7 +222,7 @@ def get_bowlers():
 
 @app.route('/api/centers', methods=['GET'])
 def get_centers():
-    """Get list of centers from the dataset with improved cleaning"""
+    """Get list of centers from the dataset - just the names, alphabetically sorted"""
     try:
         dataset = request.args.get('dataset', 'pba_results')
         
@@ -243,103 +243,52 @@ def get_centers():
         # Get unique centers from the dataset
         df = analyzers[dataset].df
         
-        # Debug info
-        print("Center location column information:")
-        if 'center_location' in df.columns:
-            print(f"Center location column exists. First 5 values: {df['center_location'].head().tolist()}")
-        else:
-            print("center_location column not found! Available columns:", df.columns.tolist())
-        
         centers = []
+        unique_names = set()
         
-        # Clean and normalize function for addresses
-        def clean_location(loc):
-            if pd.isna(loc) or loc == '':
+        # Clean and normalize function for center names
+        def clean_text(text):
+            if pd.isna(text) or text == '':
                 return ''
-                
-            # Convert to string if not already
-            loc = str(loc)
-            
-            # Normalize spaces
-            loc = ' '.join(loc.split())
-            
-            # Normalize common punctuation
-            loc = loc.replace(' ,', ',').replace(', ', ',').replace(' .', '.')
-            
-            # Extract just the venue name if possible
-            parts = loc.split(',')
-            if len(parts) > 0:
-                # Use just the venue name if it's long enough
-                if len(parts[0]) > 15:
-                    return parts[0].strip()
-            
-            return loc.strip()
+            text = str(text).strip()
+            return ' '.join(text.split())  # Normalize spaces
         
-        # Use center_location as the main identifier for bowling centers
-        if 'center_location' in df.columns:
-            print("Using center_location for bowling centers with improved cleaning")
+        # PRIORITY 1: Use center_name if available
+        if 'center_name' in df.columns and not df['center_name'].isna().all():
+            print("Using center_name column")
             
-            # Clean and normalize all location values
-            df['cleaned_location'] = df['center_location'].apply(clean_location)
+            for center_name in df['center_name'].dropna().unique():
+                cleaned_name = clean_text(center_name)
+                if cleaned_name and len(cleaned_name) >= 3 and cleaned_name not in unique_names:
+                    unique_names.add(cleaned_name)
+                    centers.append({'name': cleaned_name})
+        
+        # PRIORITY 2: If center_name doesn't yield results, try center_location
+        if not centers and 'center_location' in df.columns and not df['center_location'].isna().all():
+            print("Falling back to center_location column")
             
-            # Group similar locations (basic approach)
-            location_mapping = {}
+            for location in df['center_location'].dropna().unique():
+                cleaned_loc = clean_text(location)
+                if cleaned_loc and len(cleaned_loc) >= 3:
+                    # Extract first part of location (before comma if any)
+                    venue_name = cleaned_loc.split(',')[0].strip()
+                    if venue_name and venue_name not in unique_names:
+                        unique_names.add(venue_name)
+                        centers.append({'name': venue_name})
+        
+        # PRIORITY 3: Use tournament names if needed
+        if not centers and 'tournament_name' in df.columns:
+            print("Using tournament names")
             
-            # First pass - exact matches after cleaning
-            unique_cleaned = df['cleaned_location'].dropna().drop_duplicates().sort_values().tolist()
-            
-            # Group similar locations (for the duplicates you mentioned)
-            for loc in unique_cleaned:
-                if len(loc) < 5:  # Skip very short values
-                    continue
-                    
-                # Check if this location is similar to any existing key
-                matched = False
-                for existing_key in location_mapping.keys():
-                    # Check for significant overlap
-                    if (existing_key in loc or loc in existing_key) and abs(len(existing_key) - len(loc)) < 10:
-                        # Use the shorter one as the display name
-                        if len(loc) < len(existing_key):
-                            location_mapping[existing_key] = loc
-                        matched = True
-                        break
-                
-                if not matched:
-                    location_mapping[loc] = loc
-            
-            # Add unique cleaned locations
-            seen_displays = set()
-            for i, display_name in enumerate(location_mapping.values()):
-                if display_name in seen_displays or len(display_name) < 5:
-                    continue
-                    
-                seen_displays.add(display_name)
-                centers.append({
-                    'id': i + 1,
-                    'name': display_name,
-                    'location': 'Bowling Center'
-                })
-                
-        # If we don't have center_location or it's empty, fall back to other options
+            for tournament in df['tournament_name'].dropna().unique():
+                cleaned_name = clean_text(tournament)
+                if cleaned_name and len(cleaned_name) >= 3 and cleaned_name not in unique_names:
+                    unique_names.add(cleaned_name)
+                    centers.append({'name': f"Event: {cleaned_name}"})
+        
+        # PRIORITY 4: Default fallback values
         if not centers:
-            # Try tournament names for events
-            if 'tournament_name' in df.columns:
-                print("Using tournament names as event locations")
-                unique_tournaments = df['tournament_name'].dropna().drop_duplicates().sort_values().tolist()
-                
-                for i, tournament_name in enumerate(unique_tournaments):
-                    if pd.isna(tournament_name) or tournament_name == '' or len(tournament_name) < 5:
-                        continue
-                        
-                    centers.append({
-                        'id': i + 1,
-                        'name': f"Event: {tournament_name}",
-                        'location': 'Tournament'
-                    })
-                    
-        # If we still have no centers, provide some default values for testing
-        if not centers:
-            print("No center data found, providing default values")
+            print("Using default values")
             default_centers = [
                 "Thunderbowl Lanes",
                 "South Point Bowling Plaza",
@@ -348,12 +297,17 @@ def get_centers():
                 "The Orleans"
             ]
             
-            for i, center in enumerate(default_centers):
-                centers.append({
-                    'id': i + 1,
-                    'name': center,
-                    'location': 'Bowling Center'
-                })
+            for center in default_centers:
+                if center not in unique_names:
+                    centers.append({'name': center})
+        
+        # Sort alphabetically and add location as empty string
+        centers = sorted(centers, key=lambda x: x['name'])
+        
+        # Add IDs and empty location field
+        for i, center in enumerate(centers):
+            center['id'] = i + 1
+            center['location'] = ''  # Empty string for location
         
         return jsonify(centers)
     except Exception as e:
@@ -439,6 +393,13 @@ def get_patterns():
                     
                 patterns.append(pattern)
         
+        # Sort patterns alphabetically by name
+        patterns = sorted(patterns, key=lambda p: p['name'])
+        
+        # Reassign IDs after sorting to maintain consistent order
+        for i, pattern in enumerate(patterns):
+            pattern['id'] = i + 1
+        
         return jsonify(patterns)
     except Exception as e:
         print(f"Error in get_patterns: {str(e)}")
@@ -446,16 +407,19 @@ def get_patterns():
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
+# Updates to data_pipeline.py - Fix prediction sorting and restore original limits
+
 @app.route('/api/predictions', methods=['GET'])
 def get_predictions():
-    """Get predictions for a center and pattern"""
+    """Get predictions for a center and pattern, with support for pattern length"""
     try:
         dataset = request.args.get('dataset', 'pba_results')
         center_id = request.args.get('center')
         pattern_id = request.args.get('pattern')
+        pattern_length = request.args.get('patternLength')
         
         # Debug information
-        print(f"Prediction request - center_id: {center_id}, pattern_id: {pattern_id}")
+        print(f"Prediction request - center_id: {center_id}, pattern_id: {pattern_id}, pattern_length: {pattern_length}")
         
         if len(predictors) == 0:
             initialize_models()
@@ -487,35 +451,93 @@ def get_predictions():
         if pattern_id and pattern_id != '0' and pattern_id.strip() != '':
             pattern = next((p for p in patterns if str(p['id']) == pattern_id), None)
             print(f"Selected pattern: {pattern['name'] if pattern else 'None'}")
+        # Check if we have a pattern length specified
+        elif pattern_length and pattern_length.strip() != '':
+            try:
+                length = float(pattern_length)
+                print(f"Using pattern length: {length}ft")
+                # Find a pattern with matching length or similar category
+                pattern = next((p for p in patterns if abs(p['length'] - length) < 0.5), None)
+                if not pattern:
+                    # Find a pattern in the same length category
+                    if length <= 36:
+                        pattern = next((p for p in patterns if p['category'] == 'Short'), None)
+                    elif length <= 41:
+                        pattern = next((p for p in patterns if p['category'] == 'Medium'), None)
+                    elif length <= 47:
+                        pattern = next((p for p in patterns if p['category'] == 'Long'), None)
+                    else:
+                        pattern = next((p for p in patterns if p['category'] == 'Extra Long'), None)
+                
+                # If we found a pattern to use as reference, modify its name and length
+                if pattern:
+                    pattern = dict(pattern)  # Create a copy to avoid modifying the original
+                    pattern['name'] = f"{length}ft Pattern"
+                    pattern['length'] = length
+                    print(f"Using pattern based on length: {pattern['name']}")
+            except (ValueError, TypeError):
+                print(f"Invalid pattern length: {pattern_length}")
             
         # Need at least one valid selection
         if not center and not pattern:
             return jsonify({'error': 'No center or pattern selected. Please make at least one selection.'}), 400
         
-        # Get predictions
-        predictor = predictors[dataset]
+        # Get predictions using analyzer instead of predictor when we have a pattern length
+        analyzer = analyzers[dataset]
         
         # Use default values if either center or pattern is missing
-        center_name = center['name'] if center else "All Centers"
-        pattern_category = pattern['category'] if pattern else "All Patterns"
+        center_name = center['name'] if center else None
+        pattern_name = pattern['name'] if pattern else None
+        pattern_length_value = pattern['length'] if pattern else None
         
-        print(f"Ranking bowlers for {center_name} on {pattern_category} pattern...")
+        print(f"Ranking bowlers for center: {center_name if center_name else 'Any'}")
+        print(f"Pattern name: {pattern_name if pattern_name else 'Any'}")
+        print(f"Pattern length: {pattern_length_value}ft" if pattern_length_value else "No pattern length specified")
         
-        predictions = predictor.rank_bowlers_for_tournament(
-            center_name, 
-            pattern_category
+        # Get multi-factor prediction - restore the original top_n parameter
+        predictions_df = analyzer.get_multi_factor_prediction(
+            pattern_name=pattern_name,
+            pattern_length=pattern_length_value,
+            center_name=center_name,
+            recency_months=None,  # Use all data
+            min_events_overall=15,  # Only consider bowlers with 15+ tournaments
+            top_n=None  # Show All
         )
         
-        # Format response
+        if predictions_df is None or predictions_df.empty:
+            return jsonify([]), 200
+            
+        # For historical average position, we keep the original sorting
+        bowler_stats = analyzer.get_bowler_stats()
+        
+        # Sort by total_score in descending order to get the rank order
+        # This is the key part: total_score is the Performance Score (0-100)
+        ranked_df = predictions_df.sort_values(by='total_score', ascending=False).reset_index(drop=True)
+
+        # Create a dictionary mapping bowler names to their rank
+        rank_mapping = {row['name']: i+1 for i, (_, row) in enumerate(ranked_df.iterrows())}
+        
+        # Keep original order for display purposes (sorting can be done on the frontend)
         result = []
-        for i, (_, row) in enumerate(predictions.iterrows()):
+        for i, row in predictions_df.iterrows():
+            bowler_name = row['name']
+            # Get true average position from bowler_stats
+            true_avg_position = 0
+            if bowler_name in bowler_stats.index:
+                true_avg_position = float(bowler_stats.loc[bowler_name, 'avg_position'])
+
+            # Use the rank as the predicted position - THIS IS THE KEY FIX
+            predicted_position = rank_mapping.get(bowler_name, i+1)
+
+            # Format the result for the frontend
             result.append({
                 'bowlerId': i + 1,
-                'bowlerName': row['bowler'],
-                'predictedPosition': float(row['predicted_position']),
-                'patternExperience': int(row['pattern_experience']),
-                'centerExperience': int(row['center_experience']),
-                'winPercentage': 60.0  # Placeholder, would calculate from actual data
+                'bowlerName': row['name'],
+                'predictedPosition': float(predicted_position),  # Use rank based on total_score
+                'patternExperience': int(row['pattern_tournaments']) if pd.notna(row['pattern_tournaments']) else 0,
+                'centerExperience': int(row['center_tournaments']) if pd.notna(row['center_tournaments']) else 0,
+                'avgPosition': float(row['total_score']) if pd.notna(row['total_score']) else 0,  # Performance Score (0-100)
+                'trueAvgPosition': true_avg_position  # Historical average position
             })
             
         return jsonify(result)
@@ -604,9 +626,9 @@ def get_bowler_performance(bowler_id):
         try:
             bowler_df = analyzer.df[analyzer.df['name'] == bowler['name']]
             if 'start_date' in bowler_df.columns:
-                recent_df = bowler_df.sort_values('start_date', ascending=False).head(10)
+                recent_df = bowler_df.sort_values('start_date', ascending=False).head(15)
             else:
-                recent_df = bowler_df.head(10)
+                recent_df = bowler_df.head(15)
             
             for i, (_, row) in enumerate(recent_df.iterrows()):
                 # Default values
@@ -661,7 +683,7 @@ def get_bowler_performance(bowler_id):
                     if not pattern_stats.empty and category in pattern_stats.index:
                         category_stats = pattern_stats.loc[category]
                         if 'avg_position' in category_stats and pd.notna(category_stats['avg_position']):
-                            value = 100 - min(100, max(0, float(category_stats['avg_position']) * 10))
+                            value = max(0, 100 - float(category_stats['avg_position']))
                 except Exception as e:
                     print(f"Error calculating radar value for {category}: {str(e)}")
                 
@@ -671,18 +693,38 @@ def get_bowler_performance(bowler_id):
                 })
             
             # Add other radar attributes
-            win_pct = min(100, max(0, bowler.get('win_percentage', 60)))
-            response['patternRadar'].append({'attribute': 'Match Play Win %', 'value': win_pct})
+            # Professional bowler Overall Scoring calculation
+            try:
+                bowler_df = analyzer.df[analyzer.df['name'] == bowler['name']]
+    
+                if 'average' in bowler_df.columns:
+                    # Filter out zeros and obviously incorrect values, but keep legitimate low scores
+                    avg_data = pd.to_numeric(bowler_df['average'], errors='coerce')
+                    valid_avg = avg_data[(avg_data > 100) & (avg_data < 300)]  # Reasonable bowling range
+        
+                    if len(valid_avg) > 0:
+                        avg_score = valid_avg.mean()
+                        print(f"Bowler {bowler['name']} average from {len(valid_avg)} tournaments: {avg_score}")
             
-            earnings_value = min(100, max(0, bowler.get('total_earnings', 50000) / 1000))
-            response['patternRadar'].append({'attribute': 'Earnings Potential', 'value': earnings_value})
+                        # Professional scale: 200 = 0, 215 = 50, 230 = 100
+                        value = min(100, max(0, (avg_score - 200) * 4))
+                    else:
+                        print(f"No valid average data for {bowler['name']}")
+                        value = 60.0  # Slightly above average default for professionals
+                else:
+                    print(f"No average column found")
+                    value = 60.0
+            except Exception as e:
+                print(f"Error calculating overall scoring: {str(e)}")
+                value = 60.0
+            response['patternRadar'].append({'attribute': 'Overall Scoring', 'value': value})
         except Exception as e:
             print(f"Error calculating radar stats: {str(e)}")
             
             # If radar chart is empty, add default values
             if not response['patternRadar']:
                 for category in ['Short Patterns', 'Medium Patterns', 'Long Patterns', 'Extra Long Patterns', 
-                              'Match Play Win %', 'Earnings Potential']:
+                              'Overall Scoring', 'Earnings Potential']:
                     response['patternRadar'].append({'attribute': category, 'value': 50.0})
         
         # Print final response structure

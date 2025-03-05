@@ -17,7 +17,7 @@ const App: React.FC = () => {
       
       <footer className="bg-gray-800 text-white py-4 mt-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p>&copy; {new Date().getFullYear()} PBA Tournament Analysis - Data Analysis Project</p>
+          <p>&copy; {new Date().getFullYear()} PBA Tournament Analysis - Created by Darren Olson</p>
         </div>
       </footer>
     </div>

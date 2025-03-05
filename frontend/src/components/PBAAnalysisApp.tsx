@@ -7,12 +7,37 @@ import {
 import API, { Bowler, Center, Pattern, Prediction, BowlerPerformance } from '../services/api';
 import OilPatternVisualizer from './OilPatternVisualizer';
 
+// Simple arrow indicators instead of lucide-react icons
+const ArrowIndicators = {
+  Up: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block text-green-600">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="16 12 12 8 8 12" />
+      <line x1="12" y1="16" x2="12" y2="8" />
+    </svg>
+  ),
+  Down: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block text-red-600">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="8 12 12 16 16 12" />
+      <line x1="12" y1="8" x2="12" y2="16" />
+    </svg>
+  ),
+  Neutral: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block text-gray-500">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  )
+};
+
 const PBAAnalysisApp: React.FC = () => {
   const [bowlers, setBowlers] = useState<Bowler[]>([]);
   const [centers, setCenters] = useState<Center[]>([]);
   const [patterns, setPatterns] = useState<Pattern[]>([]);
   const [selectedCenter, setSelectedCenter] = useState<Center | null>(null);
   const [selectedPattern, setSelectedPattern] = useState<Pattern | null>(null);
+  const [selectedPatternLength, setSelectedPatternLength] = useState<string>('');
   const [predictions, setPredictions] = useState<Prediction[]>([]);
   const [selectedBowler, setSelectedBowler] = useState<Bowler | null>(null);
   const [bowlerPerformance, setBowlerPerformance] = useState<BowlerPerformance | null>(null);
@@ -44,18 +69,79 @@ const PBAAnalysisApp: React.FC = () => {
     fetchInitialData();
   }, []);
 
-  // Modified: Fetch predictions with partial selections
+  // Fetch predictions with partial selections
   const fetchPredictions = async () => {
-    // Require at least one selection (center or pattern)
-    if (selectedCenter || selectedPattern) {
+    // Require at least one selection (center or pattern or pattern length)
+    if (selectedCenter || selectedPattern || (selectedPatternLength && selectedPatternLength.trim() !== '')) {
       setLoading(true);
       setError(null);
       try {
         const centerId = selectedCenter?.id || 0;
         const patternId = selectedPattern?.id || 0;
         
-        const predictionData = await API.getPredictions(centerId, patternId);
-        setPredictions(predictionData);
+        // If using pattern length instead of pattern selection
+        let effectivePatternId = patternId;
+        if (!selectedPattern && selectedPatternLength && selectedPatternLength.trim() !== '') {
+          // Find a pattern with matching length or create a temporary one
+          const length = parseFloat(selectedPatternLength);
+          if (!isNaN(length)) {
+            const matchingPattern = patterns.find(p => Math.abs(p.length - length) < 0.5);
+            if (matchingPattern) {
+              effectivePatternId = matchingPattern.id;
+            } else {
+              // Could implement API call to handle custom length here
+              // For now, we'll use a fallback approach
+              console.log("Using custom pattern length:", length);
+              // Find any pattern with similar length category
+              if (length <= 36) {
+                const shortPattern = patterns.find(p => p.category === 'Short');
+                if (shortPattern) effectivePatternId = shortPattern.id;
+              } else if (length <= 41) {
+                const mediumPattern = patterns.find(p => p.category === 'Medium');
+                if (mediumPattern) effectivePatternId = mediumPattern.id;
+              } else if (length <= 47) {
+                const longPattern = patterns.find(p => p.category === 'Long');
+                if (longPattern) effectivePatternId = longPattern.id;
+              } else {
+                const extraLongPattern = patterns.find(p => p.category === 'Extra Long');
+                if (extraLongPattern) effectivePatternId = extraLongPattern.id;
+              }
+            }
+          }
+        }
+        
+        // Get prediction data
+        const predictionData = await API.getPredictions(centerId, effectivePatternId);
+        console.log("Prediction data from API:", predictionData);
+        
+        // Get fresh bowler data directly from the API 
+        const allBowlersData = await API.getBowlers();
+        console.log("All bowlers data:", allBowlersData);
+        
+        // Combine the data correctly
+        const enhancedPredictions = predictionData.map(prediction => {
+          // Find this bowler in the complete bowlers data
+          const bowlerData = allBowlersData.find(b => b.name === prediction.bowlerName);
+          console.log(`Checking ${prediction.bowlerName}:`, bowlerData);
+          
+          // Get the actual average position from the bowlers data
+          const actualAvgPosition = bowlerData?.avg_position || 0;
+          
+          // Keep the performance score from the backend
+          const performanceScore = prediction.avgPosition || 0;
+          
+          // Calculate the position difference (compared to the actual average position)
+          const positionDiff = actualAvgPosition - prediction.predictedPosition;
+          
+          return {
+            ...prediction,
+            avgPosition: performanceScore, // Keep the performance score
+            actualAvgPosition,             // Add the actual average position  
+            positionDiff                   // Add the correct position difference
+          };
+        });
+        
+        setPredictions(enhancedPredictions);
       } catch (error) {
         console.error("Error fetching predictions:", error);
         setError("Failed to load predictions. Please try again.");
@@ -75,6 +161,15 @@ const PBAAnalysisApp: React.FC = () => {
         setError(null);
         try {
           const performanceData = await API.getBowlerPerformance(selectedBowler.id);
+          
+          // Round radar chart values to whole numbers
+          if (performanceData?.patternRadar) {
+            performanceData.patternRadar = performanceData.patternRadar.map(item => ({
+              ...item,
+              value: Math.round(item.value)
+            }));
+          }
+          
           setBowlerPerformance(performanceData);
         } catch (error) {
           console.error("Error fetching bowler performance:", error);
@@ -100,6 +195,19 @@ const PBAAnalysisApp: React.FC = () => {
     const patternId = parseInt(e.target.value);
     const pattern = patterns.find(p => p.id === patternId);
     setSelectedPattern(pattern || null);
+    // Clear pattern length if a pattern is selected
+    if (pattern) {
+      setSelectedPatternLength('');
+    }
+  };
+
+  // Handler for pattern length input
+  const handlePatternLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPatternLength(e.target.value);
+    // Clear pattern selection if length is entered
+    if (e.target.value.trim() !== '') {
+      setSelectedPattern(null);
+    }
   };
 
   // Handler for bowler selection
@@ -109,41 +217,31 @@ const PBAAnalysisApp: React.FC = () => {
     setSelectedBowler(bowler || null);
   };
 
-  // Handler for data collection
-  const handleDataCollection = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const currentYear = new Date().getFullYear();
-      await API.collectData([currentYear]);
-      // Reload all data after collection
-      const bowlerData = await API.getBowlers();
-      const centerData = await API.getCenters();
-      const patternData = await API.getPatterns();
-      
-      setBowlers(bowlerData);
-      setCenters(centerData);
-      setPatterns(patternData);
-      
-      alert("Data collection completed successfully!");
-    } catch (error) {
-      console.error("Error collecting data:", error);
-      setError("Failed to collect data. Please check the server logs.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   // Helper function to get a description of the current selection
   const getSelectionDescription = () => {
     if (selectedCenter && selectedPattern) {
       return `${selectedPattern.name} pattern at ${selectedCenter.name}`;
+    } else if (selectedCenter && selectedPatternLength && selectedPatternLength.trim() !== '') {
+      return `${selectedPatternLength}ft pattern at ${selectedCenter.name}`;
     } else if (selectedCenter) {
       return `all patterns at ${selectedCenter.name}`;
     } else if (selectedPattern) {
       return `${selectedPattern.name} pattern at all centers`;
+    } else if (selectedPatternLength && selectedPatternLength.trim() !== '') {
+      return `${selectedPatternLength}ft pattern at all centers`;
     }
     return "using available data";
+  };
+
+  // Get position difference indicator
+  const getPositionDiffIndicator = (diff: number | undefined) => {
+    if (!diff || Math.abs(diff) < 0.5) {
+      return <ArrowIndicators.Neutral />;
+    } else if (diff > 0) {
+      return <ArrowIndicators.Up />;
+    } else {
+      return <ArrowIndicators.Down />;
+    }
   };
 
   return (
@@ -156,17 +254,6 @@ const PBAAnalysisApp: React.FC = () => {
           <p>{error}</p>
         </div>
       )}
-      
-      {/* Action Buttons */}
-      <div className="mb-6 flex justify-end">
-        <button 
-          onClick={handleDataCollection}
-          disabled={loading}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-        >
-          {loading ? 'Processing...' : 'Collect Latest Data'}
-        </button>
-      </div>
       
       {/* Selection Controls */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -181,7 +268,7 @@ const PBAAnalysisApp: React.FC = () => {
             <option value="">-- Select a Bowling Center --</option>
             {centers.map(center => (
               <option key={center.id} value={center.id}>
-                {center.name} ({center.location})
+                {center.name}
               </option>
             ))}
           </select>
@@ -190,10 +277,10 @@ const PBAAnalysisApp: React.FC = () => {
         <div className="border rounded p-4 shadow">
           <h2 className="text-xl font-semibold mb-2">Select Pattern</h2>
           <select 
-            className="w-full p-2 border rounded" 
+            className="w-full p-2 border rounded mb-2" 
             onChange={handlePatternChange}
             value={selectedPattern?.id || ""}
-            disabled={loading || patterns.length === 0}
+            disabled={loading || patterns.length === 0 || selectedPatternLength.trim() !== ''}
           >
             <option value="">-- Select an Oil Pattern --</option>
             {patterns.map(pattern => (
@@ -202,6 +289,24 @@ const PBAAnalysisApp: React.FC = () => {
               </option>
             ))}
           </select>
+          
+          <div className="mt-3">
+            <h3 className="text-sm font-semibold mb-1">OR Enter Pattern Length</h3>
+            <div className="flex items-center">
+              <input
+                type="number"
+                min="30"
+                max="50"
+                step="1"
+                className="w-full p-2 border rounded"
+                placeholder="e.g., 42"
+                value={selectedPatternLength}
+                onChange={handlePatternLengthChange}
+                disabled={loading || selectedPattern !== null}
+              />
+              <span className="ml-2">ft</span>
+            </div>
+          </div>
         </div>
         
         <div className="border rounded p-4 shadow">
@@ -226,35 +331,23 @@ const PBAAnalysisApp: React.FC = () => {
       <div className="mb-8 text-center">
         <button
           onClick={fetchPredictions}
-          disabled={loading || (!selectedCenter && !selectedPattern)}
+          disabled={loading || (!selectedCenter && !selectedPattern && selectedPatternLength.trim() === '')}
           className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg disabled:opacity-50 text-lg"
         >
           {loading ? 'Generating...' : 'Generate Predictions'}
         </button>
-        {(selectedCenter || selectedPattern) && (
+        {(selectedCenter || selectedPattern || selectedPatternLength.trim() !== '') && (
           <p className="mt-2 text-gray-600">
             Generate predictions for {getSelectionDescription()}
           </p>
         )}
-        {(!selectedCenter && !selectedPattern) && (
+        {(!selectedCenter && !selectedPattern && selectedPatternLength.trim() === '') && (
           <p className="mt-2 text-gray-600">
-            Please select at least a center or a pattern to generate predictions
+            Please select at least a center, pattern, or pattern length to generate predictions
           </p>
         )}
       </div>
-      
-      {/* Pattern Visualization */}
-      {selectedPattern && (
-        <div className="mb-8">
-          <OilPatternVisualizer 
-            patternName={selectedPattern.name} 
-            length={selectedPattern.length}
-            volume={24} // Default oil volume
-            ratio={3}   // Default ratio
-          />
-        </div>
-      )}
-      
+
       {/* Predictions Section */}
       {predictions.length > 0 && (
         <div className="mb-8 border rounded p-4 shadow">
@@ -268,10 +361,11 @@ const PBAAnalysisApp: React.FC = () => {
                 <tr>
                   <th className="py-2 px-4 border-b text-left">Rank</th>
                   <th className="py-2 px-4 border-b text-left">Bowler</th>
-                  <th className="py-2 px-4 border-b text-left">Predicted Position</th>
+                  <th className="py-2 px-4 border-b text-left">Avg Position</th>
+                  <th className="py-2 px-4 border-b text-left">vs Avg Position</th>
                   <th className="py-2 px-4 border-b text-left">Pattern Experience</th>
                   <th className="py-2 px-4 border-b text-left">Center Experience</th>
-                  <th className="py-2 px-4 border-b text-left">Win Percentage</th>
+                  <th className="py-2 px-4 border-b text-left">Performance Score</th>
                 </tr>
               </thead>
               <tbody>
@@ -279,10 +373,24 @@ const PBAAnalysisApp: React.FC = () => {
                   <tr key={prediction.bowlerId} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
                     <td className="py-2 px-4 border-b">{index + 1}</td>
                     <td className="py-2 px-4 border-b font-medium">{prediction.bowlerName}</td>
-                    <td className="py-2 px-4 border-b">{prediction.predictedPosition.toFixed(1)}</td>
+                    <td className="py-2 px-4 border-b">{prediction.actualAvgPosition?.toFixed(1) || "N/A"}</td>
+                    <td className="py-2 px-4 border-b">
+                      {getPositionDiffIndicator(prediction.positionDiff)}
+                      <span className={`ml-1 ${prediction.positionDiff ? 
+                        (prediction.positionDiff > -0.5 ? 'text-green-600' : 
+                        prediction.positionDiff < 0.5 ? 'text-red-600' : 
+                        'text-gray-600') : 'text-gray-600'}`}
+                      >
+                        {prediction.positionDiff !== undefined ? 
+                          (prediction.positionDiff >= 0 ? '+' : '') + prediction.positionDiff.toFixed(1) : '0.0'}
+                      </span>
+                    </td>
                     <td className="py-2 px-4 border-b">{prediction.patternExperience}</td>
                     <td className="py-2 px-4 border-b">{prediction.centerExperience}</td>
-                    <td className="py-2 px-4 border-b">{prediction.winPercentage.toFixed(1)}%</td>
+                    <td className="py-2 px-4 border-b">
+                      <span className="text-blue-600">{prediction.avgPosition?.toFixed(1) || "N/A"}</span>
+                      <span className="text-xs text-gray-500 ml-1">(0-100)</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -329,16 +437,53 @@ const PBAAnalysisApp: React.FC = () => {
                   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="category" />
-                  <YAxis yAxisId="left" orientation="left" />
-                  <YAxis yAxisId="right" orientation="right" domain={[0, 'dataMax + 2']} />
-                  <Tooltip />
-                  <Legend />
+                  <XAxis reversed dataKey="category" />
+                  <YAxis yAxisId="left" orientation="left" reversed domain={[1,120]} />
+                  <YAxis yAxisId="right" orientation="right" domain={[0,'dataMax + 2']} />
+                  <Tooltip 
+                    content={(props) => {
+                      if (props.active && props.payload && props.payload.length) {
+                        // Safe extraction with type checking
+                        let avgPosition = "N/A";
+                        let tournamentCount = "N/A";
+      
+                        props.payload.forEach(entry => {
+                          if (entry.name === 'Avg Position' && entry.value !== undefined) {
+                            avgPosition = typeof entry.value === 'number' 
+                              ? entry.value.toFixed(2) 
+                              : String(entry.value);
+                          }
+                          if (entry.name === 'Tournament Count' && entry.value !== undefined) {
+                            tournamentCount = String(entry.value);
+                          }
+                        });
+      
+                        return (
+                          <div className="bg-white p-2 border border-gray-300 shadow-md">
+                            <p className="font-semibold">{props.label}</p>
+                            <p className="text-indigo-700">Avg Position: {avgPosition}</p>
+                            <p className="text-green-700">Tournament Count: {tournamentCount}</p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Legend 
+                  payload={[
+                      { value: 'Avg Position', type: 'square', color: '#8884d8' },
+                      { value: 'Tournament Count', type: 'square', color: '#82ca9d' }
+                    ]}
+                  />
                   <Bar 
                     yAxisId="left"
                     dataKey="avgPosition" 
                     name="Avg Position" 
-                    fill="#8884d8" 
+                    fill="#f5f5f5" 
+                    stackId="stack"
+                    minPointSize={1}
+                    background={{ fill: "#8884d8" }}
+                    maxBarSize={50}
                   />
                   <Bar 
                     yAxisId="right"
@@ -359,7 +504,7 @@ const PBAAnalysisApp: React.FC = () => {
                   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
+                  <XAxis reversed dataKey="date" />
                   <YAxis reversed domain={[1, 'dataMax + 2']} />
                   <Tooltip 
                     formatter={(value: any, name: any) => [
@@ -392,7 +537,7 @@ const PBAAnalysisApp: React.FC = () => {
                 >
                   <PolarGrid />
                   <PolarAngleAxis dataKey="attribute" />
-                  <PolarRadiusAxis angle={30} domain={[0, 100]} />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} tickFormatter={(value) => String(Math.round(value))} />
                   <Radar 
                     name="Performance" 
                     dataKey="value" 
@@ -400,7 +545,7 @@ const PBAAnalysisApp: React.FC = () => {
                     fill="#8884d8" 
                     fillOpacity={0.6} 
                   />
-                  <Tooltip />
+                  <Tooltip formatter={(value: any) => Math.round(value)} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
@@ -414,18 +559,40 @@ const PBAAnalysisApp: React.FC = () => {
                   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="category" />
+                  <XAxis reversed dataKey="category" />
                   <YAxis 
                     yAxisId="left" 
                     orientation="left"
-                    domain={[0, 'dataMax + 5000']}
+                    domain={[0, (dataMax) => Math.ceil(dataMax / 1000) * 1000]}
                     tickFormatter={(value) => `$${value / 1000}k`}
                   />
                   <Tooltip 
-                    formatter={(value: any, name: any) => [
-                      name === "avgEarnings" ? `$${value.toLocaleString()}` : value,
-                      name === "avgEarnings" ? "Avg Earnings" : name
-                    ]}
+                    content={({ active, payload, label }) => {
+                      if (active && payload && payload.length) {
+                        return (
+                          <div className="bg-white p-2 border border-gray-300 shadow-md">
+                            <p className="font-semibold">{label}</p>
+                            {payload.map((entry, index) => {
+                              let value = entry.value;
+            
+                              // Format earnings with commas and exactly 2 decimal places
+                              if (entry.dataKey === "avgEarnings") {
+                                value = `$${parseFloat(entry.value).toLocaleString('en-US', {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2
+                                })}`;
+                              }
+                              return (
+                                <p key={`item-${index}`} style={{ color: entry.color }}>
+                                  {entry.name}: {value}
+                                </p>
+                              );
+                            })}
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
                   />
                   <Legend />
                   <Bar 
@@ -450,6 +617,22 @@ const PBAAnalysisApp: React.FC = () => {
           </div>
         </div>
       )}
+        <div className="mt-12 border-t pt-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-blue-50 p-4 rounded shadow">
+              <h3 className="font-bold text-blue-800">Short Patterns ({"<"}36 feet)</h3>
+            </div>
+            <div className="bg-green-50 p-4 rounded shadow">
+              <h3 className="font-bold text-green-800">Medium Patterns (37-41 feet)</h3>
+            </div>   
+            <div className="bg-amber-50 p-4 rounded shadow">
+              <h3 className="font-bold text-amber-800">Long Patterns (42-47 feet)</h3>
+            </div>   
+            <div className="bg-red-50 p-4 rounded shadow">
+              <h3 className="font-bold text-red-800">Extra Long Patterns (48+ feet)</h3>
+            </div>
+          </div>
+        </div>
     </div>
   );
 };

@@ -19,6 +19,7 @@ class PBAScraper:
         self.known_patterns = {
             'cheetah': 35,
             'wolf': 33,
+            'bat': 37,
             'chameleon': 41,
             'scorpion': 42,
             'shark': 48,
@@ -33,6 +34,8 @@ class PBAScraper:
             'amleto monacelli': 40,
             'billy hardwick': 44,
             'don johnson': 40,
+            'mark roth': 43,
+            'marshall holman': 38,
             'earl anthony': 43,
             'don carter': 37,
             'wayne webb': 38,
@@ -266,6 +269,7 @@ class PBAScraper:
     def get_tournament_results(self, tournament_url):
         """
         Scrapes results from a specific tournament page
+        Enhanced to better separate tournament name from center name
         """
         print(f"Fetching tournament details from: {tournament_url}")
         
@@ -311,13 +315,18 @@ class PBAScraper:
         # Get dates
         tournament_info.update(self._extract_dates(soup))
         
-        # Get center info
+        # Get center info using the enhanced method
         center_info = self._extract_center_info(soup)
         tournament_info['center'] = center_info
         
         # Extract results using multiple methods
         tournament_info['results'] = self._extract_results(soup)
         print(f"Found {len(tournament_info['results'])} bowler results")
+        
+        # After extraction, verify we didn't set tournament name as center name accidentally
+        if tournament_info['center']['name'] == tournament_info['name']:
+            print("Warning: Center name is same as tournament name. Clearing center name.")
+            tournament_info['center']['name'] = "Venue not specified"
         
         # If we have few results (likely just the stepladder finals), 
         # look for a Full Standings section or link
@@ -456,17 +465,32 @@ class PBAScraper:
         return dates_info
     
     def _extract_center_info(self, soup):
-        """Extract bowling center information"""
+        """Extract bowling center information - FIXED to correctly identify the center name"""
         center_info = {
             'name': '',
             'location': ''
         }
         
-        # Try field--name-title for center name
-        center_name = soup.find('span', class_='field--name-title')
-        if center_name:
-            center_info['name'] = center_name.text.strip()
-            print(f"Center name: {center_info['name']}")
+        # NEW: Look specifically for the venue field structure in the HTML you provided
+        venue_field = soup.find('div', class_='field--name-field-venue')
+        if venue_field:
+            print("Found field--name-field-venue div")
+            # Look for the title span within this structure
+            title_span = venue_field.find('span', class_='field--name-title')
+            if title_span:
+                center_info['name'] = title_span.text.strip()
+                print(f"Found center name from venue field: {center_info['name']}")
+        
+        # If we still don't have a name, try the original approaches
+        if not center_info['name']:
+            # Try field--name-title for center name (not within venue context)
+            center_name = soup.find('span', class_='field--name-title')
+            if center_name:
+                # Make sure this isn't part of the tournament info
+                parent_classes = str(center_name.parent.get('class', ''))
+                if 'tournament' not in parent_classes.lower():
+                    center_info['name'] = center_name.text.strip()
+                    print(f"Center name from title span: {center_info['name']}")
         
         # Try field--name-field-address for location
         center_address = soup.find('div', class_='field--name-field-address')
@@ -477,9 +501,61 @@ class PBAScraper:
             ])
             print(f"Center location: {center_info['location']}")
         
-        # If we don't have a center name yet, look for venue information
+        # Look for "Host center" label and get the text after it
+        host_center_label = soup.find(string=re.compile(r'Host center', re.IGNORECASE))
+        if host_center_label and not center_info['name']:
+            print("Found 'Host center' label")
+            parent = host_center_label.parent
+            # Try to find the next sibling or container with the actual center name
+            if parent:
+                # First look for the field__items div
+                items_div = parent.find_next('div', class_='field__items')
+                if items_div:
+                    # Then look for the title span inside
+                    title_span = items_div.find('span', class_='field--name-title') 
+                    if title_span:
+                        center_info['name'] = title_span.text.strip()
+                        print(f"Found center name after 'Host center' label: {center_info['name']}")
+        
+        # Try to find venue information explicitly
+        venue_headers = soup.find_all(string=re.compile(r'venue|location|bowling center|host center', re.IGNORECASE))
+        for header in venue_headers:
+            if center_info['name']:  # If we already have a name, break
+                break
+                
+            print(f"Found venue header: {header}")
+            parent = header.parent
+            # Check if we can find the center name in a specific format
+            # Format 1: Header followed by div with items and then span with title
+            items_div = parent.find_next('div', class_='field__items')
+            if items_div:
+                title_span = items_div.find('span', class_='field--name-title')
+                if title_span:
+                    center_info['name'] = title_span.text.strip()
+                    print(f"Found center name format 1: {center_info['name']}")
+                    break
+                    
+            # Format 2: Look for next sibling with text
+            next_elem = parent.next_sibling
+            if next_elem:
+                text = next_elem.text.strip() if hasattr(next_elem, 'text') else str(next_elem).strip()
+                if text and len(text) < 100:  # Reasonable length for a center name
+                    center_info['name'] = text
+                    print(f"Found center name format 2: {center_info['name']}")
+                    break
+            
+            # Format 3: Look for "Host center: XYZ Lanes" pattern
+            if ':' in parent.text:
+                parts = parent.text.split(':', 1)
+                value = parts[1].strip()
+                if value and len(value) < 100:  # Reasonable length for a center name
+                    center_info['name'] = value
+                    print(f"Found center name format 3: {center_info['name']}")
+                    break
+        
+        # If we still don't have a center name, look for venue information in other ways
         if not center_info['name']:
-            venue_keywords = ['venue', 'location', 'center', 'bowling']
+            venue_keywords = ['venue', 'location', 'center', 'bowling', 'host center', 'lanes']
             for keyword in venue_keywords:
                 elements = soup.find_all(string=re.compile(keyword, re.IGNORECASE))
                 for element in elements:
@@ -493,6 +569,20 @@ class PBAScraper:
                                 center_info['name'] = value
                             elif not center_info['location'] and ',' in value:  # Location likely has commas
                                 center_info['location'] = value
+        
+        # IMPORTANT: Don't use tournament name as fallback for center name
+        # If we still don't have a center name, look for any h2 or h3 that might contain venue info
+        if not center_info['name']:
+            for heading in soup.find_all(['h2', 'h3', 'h4']):
+                text = heading.text.strip().lower()
+                if any(word in text for word in ['bowl', 'lanes', 'center']):
+                    # This heading might be a bowling center
+                    center_info['name'] = heading.text.strip()
+                    break
+        
+        # If we still don't have a venue, use a placeholder
+        if not center_info['name']:
+            center_info['name'] = "Venue not specified"
         
         return center_info
     
@@ -721,6 +811,7 @@ class PBAScraper:
     def extract_pattern_info(self, soup, tournament_name=""):
         """
         Extracts detailed oil pattern information
+        Fixed to better handle "OIL PATTERN INFO:" format
         """
         pattern_info = {
             'name': None,
@@ -729,6 +820,9 @@ class PBAScraper:
             'ratio': None
         }
         
+        # Flag to track if we've found a pattern name other than "Info"
+        found_real_pattern = False
+        
         # Find the oil pattern section
         pattern_section = soup.find('div', id='collapse-oil-patterns')
         if pattern_section:
@@ -736,8 +830,14 @@ class PBAScraper:
             # Get pattern name
             pattern_title = pattern_section.find('span', class_='field--name-title')
             if pattern_title:
-                pattern_info['name'] = pattern_title.text.strip()
-                print(f"Pattern name: {pattern_info['name']}")
+                pattern_name = pattern_title.text.strip()
+                # Don't use "Info" as a pattern name
+                if pattern_name.lower() != "info" and len(pattern_name) > 1:
+                    pattern_info['name'] = pattern_name
+                    found_real_pattern = True
+                    print(f"Pattern name: {pattern_info['name']}")
+                else:
+                    print(f"Found 'Info' as pattern name, will look for better name")
             
             # Look for pattern specifications
             pattern_specs = pattern_section.find_all('div', class_='field__item')
@@ -761,84 +861,184 @@ class PBAScraper:
                     if ratio_match:
                         pattern_info['ratio'] = float(ratio_match.group(1))
                         print(f"Pattern ratio: {pattern_info['ratio']}:1")
-                        
-            # If we have a pattern name but no length, try to infer from known patterns
-            if pattern_info['name'] and not pattern_info['length']:
-                pattern_name_lower = pattern_info['name'].lower()
-                for known_name, known_length in self.known_patterns.items():
-                    if known_name in pattern_name_lower:
-                        pattern_info['length'] = known_length
-                        print(f"Inferred pattern length {known_length} from known pattern '{known_name}'")
-                        break
         
-        # If we still don't have pattern info, try multiple other methods
-        if not pattern_info['name'] or not pattern_info['length']:
-            # Method 1: Look for "OIL PATTERN INFO" section
-            for heading in soup.find_all(['h2', 'h3', 'h4']):
-                if 'oil pattern' in heading.text.lower() or 'lane condition' in heading.text.lower():
-                    # Look at the text following this heading
-                    pattern_text = ""
-                    next_elem = heading.next_sibling
-                    while next_elem and next_elem.name not in ['h2', 'h3', 'h4']:
+        # If we haven't found valid pattern info, try to find pattern info headers
+        if not found_real_pattern:
+            # Method 1: Look for "OIL PATTERN INFO:" section
+            pattern_headers = []
+            
+            # First find headers with "oil pattern info" text
+            for element in soup.find_all(string=re.compile(r'oil pattern info', re.IGNORECASE)):
+                pattern_headers.append(element)
+            
+            # Also look for headers followed by pattern-like text
+            for heading in soup.find_all(['h2', 'h3', 'h4', 'strong', 'b']):
+                if 'oil pattern' in heading.text.lower():
+                    pattern_headers.append(heading)
+            
+            # Process each potential pattern header
+            for header in pattern_headers:
+                print(f"Found pattern header: {header.strip() if isinstance(header, str) else header.text.strip()}")
+                
+                # Get the text following this header
+                pattern_text = ""
+                
+                # If it's a string (NavigableString), get the parent and then next siblings
+                if isinstance(header, str):
+                    parent = header.parent
+                    next_elem = parent.next_sibling
+                    
+                    # Collect text from next siblings until we hit a new heading or section
+                    while next_elem and not (hasattr(next_elem, 'name') and next_elem.name in ['h2', 'h3', 'h4']):
                         if hasattr(next_elem, 'text'):
                             pattern_text += next_elem.text + " "
+                        elif isinstance(next_elem, str):
+                            pattern_text += next_elem + " "
                         next_elem = next_elem.next_sibling
+                # If it's an element, get next siblings
+                else:
+                    next_elem = header.next_sibling
                     
-                    # Search for pattern name and length in this text
+                    # Collect text from next siblings
+                    while next_elem and not (hasattr(next_elem, 'name') and next_elem.name in ['h2', 'h3', 'h4']):
+                        if hasattr(next_elem, 'text'):
+                            pattern_text += next_elem.text + " "
+                        elif isinstance(next_elem, str):
+                            pattern_text += next_elem + " "
+                        next_elem = next_elem.next_sibling
+                
+                # Also check for pattern info in the next paragraph
+                next_p = header.find_next('p') if hasattr(header, 'find_next') else None
+                if next_p and len(pattern_text.strip()) < 5:
+                    pattern_text = next_p.text
+                
+                # If we found text, try to extract pattern information
+                if pattern_text:
+                    print(f"Found pattern text: {pattern_text.strip()}")
                     self._extract_pattern_from_text(pattern_text, pattern_info)
-            
+                
+                # If we found a pattern name, stop looking
+                if pattern_info['name'] and pattern_info['name'].lower() != "info":
+                    found_real_pattern = True
+                    break
+                
             # Method 2: Look for pattern info in tournament notes
-            notes_keywords = ['tournament notes', 'event notes', 'notes']
-            for keyword in notes_keywords:
-                notes_elem = soup.find(string=re.compile(keyword, re.IGNORECASE))
-                if notes_elem:
-                    # Get the containing element and its text
-                    parent = notes_elem.parent
-                    notes_text = ""
-                    # Try to get all text in the notes section
-                    for sibling in parent.next_siblings:
-                        if hasattr(sibling, 'text'):
-                            notes_text += sibling.text + " "
-                        if sibling.name in ['h2', 'h3', 'h4']:  # Stop at next heading
+            if not found_real_pattern:
+                notes_keywords = ['tournament notes', 'event notes', 'notes']
+                for keyword in notes_keywords:
+                    notes_elem = soup.find(string=re.compile(keyword, re.IGNORECASE))
+                    if notes_elem:
+                        # Get the containing element and its text
+                        parent = notes_elem.parent
+                        notes_text = ""
+                        # Try to get all text in the notes section
+                        for sibling in parent.next_siblings:
+                            if hasattr(sibling, 'text'):
+                                notes_text += sibling.text + " "
+                            if sibling.name in ['h2', 'h3', 'h4']:  # Stop at next heading
+                                break
+                        
+                        # Extract pattern info from notes text
+                        self._extract_pattern_from_text(notes_text, pattern_info)
+                        
+                        # If we found a valid pattern name, break
+                        if pattern_info['name'] and pattern_info['name'].lower() != "info":
+                            found_real_pattern = True
                             break
-                    
-                    # Extract pattern info from notes text
-                    self._extract_pattern_from_text(notes_text, pattern_info)
             
             # Method 3: Look anywhere on the page for oil pattern mentions
-            oil_pattern_texts = soup.find_all(string=re.compile(r'oil pattern|lane condition|pattern', re.IGNORECASE))
-            for text_elem in oil_pattern_texts:
-                if hasattr(text_elem.parent, 'text'):
-                    self._extract_pattern_from_text(text_elem.parent.text, pattern_info)
+            if not found_real_pattern:
+                oil_pattern_texts = soup.find_all(string=re.compile(r'oil pattern|lane condition|pattern', re.IGNORECASE))
+                for text_elem in oil_pattern_texts:
+                    if hasattr(text_elem.parent, 'text'):
+                        self._extract_pattern_from_text(text_elem.parent.text, pattern_info)
+                        if pattern_info['name'] and pattern_info['name'].lower() != "info":
+                            found_real_pattern = True
+                            break
         
-        # As a last resort, try to infer from tournament name
-        if tournament_name and (not pattern_info['name'] or not pattern_info['length']):
+        # Look for pattern name/length in format like "Scorpion 44"
+        if not found_real_pattern:
+            # Try specific format looking for patterns like "PTQ: 2025 Scorpion 44"
+            for tag in soup.find_all(['p', 'div', 'span']):
+                text = tag.text.strip()
+                if 'ptq:' in text.lower() or 'oil pattern' in text.lower():
+                    # Look for a known pattern name followed by a number
+                    for pattern_name in self.known_patterns.keys():
+                        pattern_match = re.search(
+                            r'(\b' + re.escape(pattern_name) + r'\s+(\d{2}))', 
+                            text.lower()
+                        )
+                        if pattern_match:
+                            pattern_info['name'] = pattern_name.title()
+                            pattern_info['length'] = int(pattern_match.group(2))
+                            found_real_pattern = True
+                            print(f"Found pattern from text '{text}': {pattern_info['name']} {pattern_info['length']}")
+                            break
+                    
+                    # If we found a pattern, break out of the loop
+                    if found_real_pattern:
+                        break
+                    
+                    # Try generic approach, looking for any word followed by a 2-digit number
+                    generic_match = re.search(r'\b([A-Za-z]+)\s+(\d{2})\b', text)
+                    if generic_match:
+                        candidate_name = generic_match.group(1).strip()
+                        if len(candidate_name) > 2 and candidate_name.lower() != 'info':
+                            pattern_info['name'] = candidate_name.title()
+                            pattern_info['length'] = int(generic_match.group(2))
+                            found_real_pattern = True
+                            print(f"Found generic pattern from text '{text}': {pattern_info['name']} {pattern_info['length']}")
+                            break
+        
+        # IMPORTANT: Use known patterns from tournament name
+        # This is a key step to ensure we get the right values for common patterns
+        if tournament_name:
             tournament_lower = tournament_name.lower()
             
             # Look for known pattern names in tournament name
             for known_name, known_length in self.known_patterns.items():
                 if known_name in tournament_lower:
-                    if not pattern_info['name']:
+                    # If we haven't found a better pattern name, use this one
+                    if not found_real_pattern:
                         pattern_info['name'] = known_name.title()
                         print(f"Inferred pattern name '{known_name}' from tournament name")
+                        found_real_pattern = True
+                    
+                    # If we still don't have a length, use the default known length
                     if not pattern_info['length']:
                         pattern_info['length'] = known_length
                         print(f"Inferred pattern length {known_length} from known pattern '{known_name}'")
                     break
             
             # Look for direct pattern specification like "Pattern 39" or "42 feet"
-            pattern_spec_match = re.search(r'pattern\s+(\d{2})|(\d{2})\s*(?:ft|feet)', tournament_lower)
-            if pattern_spec_match:
-                length = pattern_spec_match.group(1) or pattern_spec_match.group(2)
-                if length:
-                    pattern_info['length'] = int(length)
-                    print(f"Extracted pattern length {length} directly from tournament name")
+            if not pattern_info['length']:
+                pattern_spec_match = re.search(r'pattern\s+(\d{2})|(\d{2})\s*(?:ft|feet)', tournament_lower)
+                if pattern_spec_match:
+                    length = pattern_spec_match.group(1) or pattern_spec_match.group(2)
+                    if length:
+                        pattern_info['length'] = int(length)
+                        print(f"Extracted pattern length {length} directly from tournament name")
+        
+        # Final lookup from known patterns using the pattern name
+        # This ensures we always get the right length for known patterns
+        if pattern_info['name'] and not pattern_info['length']:
+            pattern_name_lower = pattern_info['name'].lower()
+            for known_name, known_length in self.known_patterns.items():
+                if known_name == pattern_name_lower or known_name in pattern_name_lower:
+                    pattern_info['length'] = known_length
+                    print(f"Set length {known_length} from known pattern dictionary for {pattern_info['name']}")
+                    break
+        
+        # Make sure we never return "Info" as a pattern name
+        if pattern_info['name'] and pattern_info['name'].lower() == 'info':
+            pattern_info['name'] = None
         
         return pattern_info
-    
+
     def _extract_pattern_from_text(self, text, pattern_info):
         """
         Extract pattern name and length from text
+        Enhanced to handle "Scorpion 44" format and avoid "Info" as pattern name
         """
         if not text:
             return
@@ -846,11 +1046,54 @@ class PBAScraper:
         # Clean up the text
         text = text.strip().lower()
         
+        # First look for explicit pattern name + length format (like "Scorpion 44")
+        # This is the format that appears after "OIL PATTERN INFO:" headers
+        
+        # Try known patterns with numbers first
+        for known_name in self.known_patterns.keys():
+            pattern_with_length = re.search(
+                r'\b' + re.escape(known_name) + r'\s+(\d{2})\b',
+                text
+            )
+            if pattern_with_length:
+                if not pattern_info['name'] or pattern_info['name'].lower() == 'info':
+                    pattern_info['name'] = known_name.title()
+                    print(f"Found known pattern with length: {pattern_info['name']}")
+                
+                if not pattern_info['length']:
+                    pattern_info['length'] = int(pattern_with_length.group(1))
+                    print(f"Found pattern length after known pattern: {pattern_info['length']} feet")
+                
+                return
+        
+        # Try generic word followed by 2-digit number (like "Chameleon 41")
+        generic_pattern_match = re.search(r'\b([A-Za-z]+)\s+(\d{2})\b', text)
+        if generic_pattern_match:
+            candidate_name = generic_pattern_match.group(1).strip()
+            candidate_length = int(generic_pattern_match.group(2))
+            
+            # Only use if it's a reasonable pattern name (not "Info", "The", "And", etc.)
+            if len(candidate_name) > 2 and candidate_name.lower() != 'info':
+                if not pattern_info['name'] or pattern_info['name'].lower() == 'info':
+                    pattern_info['name'] = candidate_name.title()
+                    print(f"Found generic pattern name: {pattern_info['name']}")
+                
+                if not pattern_info['length']:
+                    pattern_info['length'] = candidate_length
+                    print(f"Found generic pattern length: {pattern_info['length']} feet")
+                
+                return
+        
+        # Now try the more structured format approaches
+        
         # Look for pattern name mentions in the format "Pattern: Name"
         pattern_name_match = re.search(r'pattern[:\s]+([a-z0-9\s]+)', text, re.IGNORECASE)
-        if pattern_name_match and not pattern_info['name']:
-            pattern_info['name'] = pattern_name_match.group(1).strip().title()
-            print(f"Found pattern name in text: {pattern_info['name']}")
+        if pattern_name_match and (not pattern_info['name'] or pattern_info['name'].lower() == 'info'):
+            candidate_name = pattern_name_match.group(1).strip().title()
+            # Don't use "Info" as a pattern name
+            if candidate_name.lower() != 'info' and len(candidate_name) > 1:
+                pattern_info['name'] = candidate_name
+                print(f"Found pattern name in text: {pattern_info['name']}")
         
         # Look for pattern length mentions
         # Format like "45 feet" or "Length: 45 ft"
@@ -860,7 +1103,7 @@ class PBAScraper:
             print(f"Found pattern length in text: {pattern_info['length']} feet")
         
         # Look for pattern specifications like "Pattern Name 42" where 42 is the length
-        if pattern_info['name']:
+        if pattern_info['name'] and pattern_info['name'].lower() != 'info':
             # Look for a number after the pattern name
             pattern_with_length = re.search(
                 pattern_info['name'].lower() + r'\s+(\d{2})', 
@@ -871,10 +1114,10 @@ class PBAScraper:
                 pattern_info['length'] = int(pattern_with_length.group(1))
                 print(f"Found pattern length after name: {pattern_info['length']} feet")
         
-        # Look for common pattern names followed by numbers (like "Cheetah 35")
+        # Look for common pattern names in text
         for known_name in self.known_patterns.keys():
             if known_name in text:
-                if not pattern_info['name']:
+                if not pattern_info['name'] or pattern_info['name'].lower() == 'info':
                     pattern_info['name'] = known_name.title()
                     print(f"Found known pattern name in text: {pattern_info['name']}")
                 
@@ -895,6 +1138,134 @@ class PBAScraper:
                 
                 break
     
+    def _get_existing_tournaments(self):
+        """
+        Get a list of existing tournaments from the data directory
+        Returns a set of tournament identifiers for duplicate checking
+        """
+        existing_tournaments = set()
+        
+        # Check the data directory for existing CSV files
+        data_dir = "data"
+        csv_files = [f for f in os.listdir(data_dir) if f.endswith('.csv') and 'pba_results' in f]
+        
+        for csv_file in csv_files:
+            try:
+                file_path = os.path.join(data_dir, csv_file)
+                df = pd.read_csv(file_path)
+                
+                # Extract unique tournament identifiers
+                if 'tournament_name' in df.columns and 'start_date' in df.columns:
+                    for _, row in df.iterrows():
+                        if pd.notna(row['tournament_name']) and pd.notna(row['start_date']):
+                            # Extract year from the date
+                            tournament_year = self._extract_year_from_date(row['start_date'])
+                            
+                            # Create a unique identifier: name + year
+                            if tournament_year:
+                                tournament_id = f"{row['tournament_name']}|{tournament_year}"
+                                existing_tournaments.add(tournament_id)
+            except Exception as e:
+                print(f"Error reading existing tournament data from {csv_file}: {str(e)}")
+        
+        print(f"Found {len(existing_tournaments)} unique tournament-year combinations")
+        return existing_tournaments
+
+    def _extract_year_from_date(self, date_str):
+        """
+        Extract year from date string, handling various formats
+        """
+        # Try different date formats
+        date_formats = [
+            '%Y-%m-%d',         # 2025-03-01
+            '%Y/%m/%d',         # 2025/03/01
+            '%m/%d/%Y',         # 03/01/2025
+            '%d-%m-%Y',         # 01-03-2025
+            '%B %d, %Y',        # March 1, 2025
+            '%b %d, %Y'         # Mar 1, 2025
+        ]
+        
+        if not date_str or pd.isna(date_str):
+            return None
+        
+        # ISO format detection (e.g. 2025-03-01T00:00:00)
+        if 'T' in date_str:
+            date_str = date_str.split('T')[0]
+        
+        # Try each format
+        for date_format in date_formats:
+            try:
+                date_obj = datetime.strptime(date_str, date_format)
+                return date_obj.year
+            except ValueError:
+                continue
+        
+        # If all formats fail, try regex to extract year (last resort)
+        year_match = re.search(r'20\d{2}', date_str)  # Match years 2000-2099
+        if year_match:
+            return year_match.group(0)
+        
+        print(f"Could not extract year from date: {date_str}")
+        return None
+
+    def _is_duplicate_tournament(self, tournament, existing_tournaments):
+        """
+        Check if a tournament already exists in our dataset
+        Now uses name + year to identify tournaments
+        """
+        # Get tournament name and extract year from date
+        name = tournament.get('name', '')
+        date = tournament.get('start_date', '')
+        
+        year = self._extract_year_from_date(date)
+        if not year:
+            # If we can't extract year, get it from the "year" attribute if available
+            year = tournament.get('year')
+        
+        if not year:
+            print(f"Warning: Could not determine year for tournament {name}, date: {date}")
+            # Default to current year in this case
+            year = datetime.now().year
+        
+        # Create identifier
+        tournament_id = f"{name}|{year}"
+        print(f"Checking if tournament exists: {tournament_id}")
+        
+        # Check for exact match
+        if tournament_id in existing_tournaments:
+            print(f"Found exact match for {tournament_id}")
+            return True
+            
+        # Also check for similar names in the same year
+        for existing_id in existing_tournaments:
+            try:
+                existing_name, existing_year = existing_id.split('|', 1)
+                
+                # If years match and names are similar
+                if str(year) == existing_year:
+                    # Check for name similarity
+                    similarity = self._calculate_similarity(name, existing_name)
+                    print(f"Similarity between '{name}' and '{existing_name}': {similarity:.2f}")
+                    
+                    if (name in existing_name or existing_name in name or similarity > 0.8):
+                        print(f"Found similar tournament in same year: '{existing_name}' ({existing_year})")
+                        return True
+            except ValueError:
+                # If split fails, skip this entry
+                continue
+        
+        print(f"Tournament is new: {tournament_id}")
+        return False
+    
+    def _calculate_similarity(self, str1, str2):
+        """
+        Calculate string similarity between 0 and 1
+        Higher values mean more similar strings
+        """
+        # Simple implementation using difflib
+        import difflib
+        return difflib.SequenceMatcher(None, str1, str2).ratio()
+    
     def scrape_year(self, year):
         """
         Scrapes all tournaments for a given year
@@ -904,8 +1275,18 @@ class PBAScraper:
         
         results = []
         
+        # Check for existing data to avoid duplicates
+        existing_tournaments = self._get_existing_tournaments()
+        print(f"Found {len(existing_tournaments)} existing tournaments in dataset")
+        
         for i, tournament in enumerate(tournaments):
             print(f"\nProcessing tournament {i+1}/{len(tournaments)}: {tournament['name']}")
+            
+            # Check if this tournament already exists in our data
+            if self._is_duplicate_tournament(tournament, existing_tournaments):
+                print(f"Tournament {tournament['name']} already exists in dataset. Skipping...")
+                continue
+                
             try:
                 tournament_results = self.get_tournament_results(tournament['url'])
                 if tournament_results:  # Only add if we got results
@@ -936,6 +1317,11 @@ class PBAScraper:
             
         rows = []
         for tournament in results:
+            # Extract pattern length if available
+            pattern_length = None
+            if 'pattern' in tournament and 'length' in tournament['pattern']:
+                pattern_length = tournament['pattern']['length']
+                
             for result in tournament.get('results', []):
                 row = {
                     'tournament_name': tournament.get('name', ''),
@@ -944,7 +1330,7 @@ class PBAScraper:
                     'center_name': tournament.get('center', {}).get('name', ''),
                     'center_location': tournament.get('center', {}).get('location', ''),
                     'pattern_name': tournament.get('pattern', {}).get('name', ''),
-                    'pattern_length': tournament.get('pattern', {}).get('length', ''),
+                    'pattern_length': pattern_length,
                     'pattern_volume': tournament.get('pattern', {}).get('volume', ''),
                     'pattern_ratio': tournament.get('pattern', {}).get('ratio', ''),
                 }

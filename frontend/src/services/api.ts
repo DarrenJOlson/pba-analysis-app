@@ -30,7 +30,10 @@ export interface Prediction {
   predictedPosition: number;
   patternExperience: number;
   centerExperience: number;
-  winPercentage: number;
+  avgPosition?: number;        // Performance score (0-100), not actual average position
+  actualAvgPosition?: number;  // The true average finish position across all tournaments
+  trueAvgPosition?: number;    // Alternative name for actualAvgPosition
+  positionDiff?: number;       // Difference between avg and predicted position
 }
 
 export interface PatternPerformance {
@@ -93,7 +96,7 @@ const API = {
     }
   },
 
-  // Get predictions for a tournament - handling partial selections
+  // Get predictions for a tournament
   getPredictions: async (centerId: number, patternId: number): Promise<Prediction[]> => {
     try {
       // Build the query string based on what's selected
@@ -133,17 +136,6 @@ const API = {
     } catch (error) {
       console.error('Error fetching bowler performance:', error);
       return null;
-    }
-  },
-
-  // Trigger data collection
-  collectData: async (years: number[]): Promise<any> => {
-    try {
-      const response = await axios.post('/api/data/collect', { years });
-      return response.data;
-    } catch (error) {
-      console.error('Error triggering data collection:', error);
-      throw error;
     }
   }
 };

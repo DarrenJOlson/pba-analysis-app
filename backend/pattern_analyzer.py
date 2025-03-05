@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import os
 
 class PBAAnalyzer:
-    def __init__(self, data_path="data/combined_pba_data.csv"):
+    def __init__(self, data_path="data/combined_pba_data_cleaned.csv"):
         """
         Initialize with path to combined PBA data
         """
@@ -61,33 +61,20 @@ class PBAAnalyzer:
                 # Calculate win percentage, handle missing values
                 total_matches = self.df['mp_wins'].fillna(0) + self.df['mp_losses'].fillna(0) + self.df['mp_ties'].fillna(0)
                 self.df['win_percentage'] = np.where(total_matches > 0, self.df['mp_wins'] / total_matches * 100, np.nan)
-        
-        # Convert pattern length to numeric
-        if 'pattern_length' in self.df.columns:
-            self.df['pattern_length'] = pd.to_numeric(self.df['pattern_length'], errors='coerce')
-            
-            # Create pattern categories based on length
-            self.df['pattern_category'] = pd.cut(
-                self.df['pattern_length'],
-                bins=[0, 36, 41, 47, 100],
-                labels=['Short', 'Medium', 'Long', 'Extra Long']
-            )
-            
+                
         # Add a timestamp field for recency calculations - ensure timezone-naive
         self.df['timestamp'] = self.df['start_date']
         if not self.df['timestamp'].empty and pd.notna(self.df['timestamp'].iloc[0]):
             if hasattr(self.df['timestamp'].iloc[0], 'tz'):
                 self.df['timestamp'] = self.df['timestamp'].dt.tz_localize(None)
         
-        # Add a flag for major tournaments (higher prestige events)
-        major_keywords = ['major', 'championship', 'open', 'masters', 'tournament of champions', 'players']
-        self.df['is_major'] = self.df['tournament_name'].str.lower().apply(
-            lambda x: any(keyword in x.lower() for keyword in major_keywords) if isinstance(x, str) else False
-        )
-        
-        print("Preprocessing complete.")
-        print(f"Dataset contains {len(self.df)} results across {self.df['tournament_name'].nunique()} tournaments")
-        
+        # Filter out PTQs and qualifiers for regular analyses by default
+        if 'tournament_tier' in self.df.columns:
+            self.all_data = self.df.copy()  # Keep a copy of all data
+            print(f"Full dataset contains {len(self.df)} results")
+            self.df = self.df[self.df['tournament_tier'].isin(['Major', 'Standard'])]
+            print(f"Filtered dataset (excluding qualifiers) contains {len(self.df)} results")
+            
         # Print pattern distributions
         pattern_counts = self.df.groupby('pattern_name').size().sort_values(ascending=False)
         if len(pattern_counts) > 0:
@@ -113,7 +100,8 @@ class PBAAnalyzer:
         stats = df.groupby('name').agg({
             'tournament_name': 'count',
             'position': ['mean', 'min', 'median'],
-            'earnings': ['sum', 'mean']
+            'earnings': ['sum', 'mean'],
+            'average': 'mean'  # Added average
         })
         
         # Clean up column names
@@ -123,7 +111,8 @@ class PBAAnalyzer:
             'best_position',
             'median_position',
             'total_earnings',
-            'avg_earnings'
+            'avg_earnings',
+            'avg_game_score'  # Added average score
         ]
         
         # Calculate percentage of tournaments in the top 5
@@ -210,7 +199,8 @@ class PBAAnalyzer:
         stats = pattern_df.groupby('name').agg({
             'tournament_name': 'count',
             'position': ['mean', 'min'],
-            'earnings': ['sum', 'mean']
+            'earnings': ['sum', 'mean'],
+            'average': 'mean'  # Added average
         })
         
         # Clean up column names
@@ -219,7 +209,8 @@ class PBAAnalyzer:
             'avg_position',
             'best_position',
             'total_earnings',
-            'avg_earnings'
+            'avg_earnings',
+            'avg_game_score'  # Added average score
         ]
         
         # Calculate top 5 finishes
@@ -306,7 +297,8 @@ class PBAAnalyzer:
         stats = pattern_df.groupby('name').agg({
             'tournament_name': 'count',
             'position': ['mean', 'min'],
-            'earnings': ['sum', 'mean']
+            'earnings': ['sum', 'mean'],
+            'average': 'mean'  # Added average
         })
         
         # Clean up column names
@@ -315,7 +307,8 @@ class PBAAnalyzer:
             'avg_position',
             'best_position',
             'total_earnings',
-            'avg_earnings'
+            'avg_earnings',
+            'avg_game_score'  # Added average score
         ]
         
         # Calculate top 5 finishes
@@ -385,7 +378,8 @@ class PBAAnalyzer:
         stats = center_df.groupby('name').agg({
             'tournament_name': 'count',
             'position': ['mean', 'min'],
-            'earnings': ['sum', 'mean']
+            'earnings': ['sum', 'mean'],
+            'average': 'mean'  # Added average
         })
         
         # Clean up column names
@@ -394,7 +388,8 @@ class PBAAnalyzer:
             'avg_position',
             'best_position',
             'total_earnings',
-            'avg_earnings'
+            'avg_earnings',
+            'avg_game_score'  # Added average score
         ]
         
         # Calculate top 5 finishes
@@ -448,7 +443,7 @@ class PBAAnalyzer:
         return normalized.astype(float)
     
     def get_multi_factor_prediction(self, pattern_name=None, pattern_length=None, center_name=None, 
-                                   recency_months=None, min_events_overall=3, top_n=20):
+                               recency_months=None, min_events_overall=10, top_n=20):
         """
         Get a multi-factor prediction for a tournament with weighted factors:
         - Specific pattern performance (highest weight)
@@ -496,17 +491,16 @@ class PBAAnalyzer:
         # 3. Get similar length pattern performance (medium weight)
         length_stats = pd.DataFrame()
         if pattern_length_value:
-            # Use a larger range (3 feet) to ensure we find similar patterns
             length_stats = self.get_pattern_length_stats(
                 pattern_length_value,
-                length_range=3,  # +/- 3 feet (more inclusive)
+                length_range=1,  # +/- 1 foot
                 min_tournaments=0,
                 recency_months=recency_months
             )
             
         # 4. Get overall performance (lowest weight)
         overall_stats = self.get_bowler_overall_stats(
-            min_tournaments=min_events_overall,
+            min_tournaments=min_events_overall,  # Increased from default 3 to 10
             recency_months=recency_months
         )
         
@@ -551,27 +545,43 @@ class PBAAnalyzer:
         
         # Add position stats for each factor (these will be normalized later)
         predictions['pattern_position'] = np.nan  # Use NaN instead of 999
+        predictions['pattern_average'] = np.nan  # Add game average for patterns
         if not pattern_stats.empty:
             for idx in pattern_stats.index:
                 if idx in predictions.index:
                     predictions.at[idx, 'pattern_position'] = float(pattern_stats.at[idx, 'avg_position'])
+                    # Add average score if available
+                    if 'avg_game_score' in pattern_stats.columns:
+                        predictions.at[idx, 'pattern_average'] = float(pattern_stats.at[idx, 'avg_game_score'])
         
         predictions['center_position'] = np.nan
+        predictions['center_average'] = np.nan # Add game average for centers
         if not center_stats.empty:
             for idx in center_stats.index:
                 if idx in predictions.index:
                     predictions.at[idx, 'center_position'] = float(center_stats.at[idx, 'avg_position'])
+                    # Add average score if available
+                    if 'avg_game_score' in center_stats.columns:
+                        predictions.at[idx, 'center_average'] = float(center_stats.at[idx, 'avg_game_score'])
         
         predictions['length_position'] = np.nan
+        predictions['length_average'] = np.nan # Add game average for length
         if not length_stats.empty:
             for idx in length_stats.index:
                 if idx in predictions.index:
                     predictions.at[idx, 'length_position'] = float(length_stats.at[idx, 'avg_position'])
+                    # Add average score if available
+                    if 'avg_game_score' in length_stats.columns:
+                        predictions.at[idx, 'length_average'] = float(length_stats.at[idx, 'avg_game_score'])
         
         predictions['overall_position'] = np.nan
+        predictions['overall_average'] = np.nan # Add overall average
         for idx in overall_stats.index:
             if idx in predictions.index:
                 predictions.at[idx, 'overall_position'] = float(overall_stats.at[idx, 'avg_position'])
+                # Add average score if available
+                if 'avg_game_score' in overall_stats.columns:
+                    predictions.at[idx, 'overall_average'] = float(overall_stats.at[idx, 'avg_game_score'])
         
         # Calculate experience factors (more experience = more reliable prediction)
         max_pattern = predictions['pattern_tournaments'].max() if predictions['pattern_tournaments'].max() > 0 else 1
@@ -605,39 +615,73 @@ class PBAAnalyzer:
         else:
             predictions['overall_score'] = pd.Series(0.0, index=predictions.index)
         
+        # Add average score normalization (higher is better, so don't reverse)
+        if not predictions['pattern_average'].dropna().empty:
+            predictions['pattern_avg_score'] = self.normalize_position_stat(predictions['pattern_average'].dropna(), reverse=False)
+        else:
+            predictions['pattern_avg_score'] = pd.Series(0.0, index=predictions.index)
+            
+        if not predictions['center_average'].dropna().empty:
+            predictions['center_avg_score'] = self.normalize_position_stat(predictions['center_average'].dropna(), reverse=False)
+        else:
+            predictions['center_avg_score'] = pd.Series(0.0, index=predictions.index)
+            
+        if not predictions['length_average'].dropna().empty:
+            predictions['length_avg_score'] = self.normalize_position_stat(predictions['length_average'].dropna(), reverse=False)
+        else:
+            predictions['length_avg_score'] = pd.Series(0.0, index=predictions.index)
+            
+        if not predictions['overall_average'].dropna().empty:
+            predictions['overall_avg_score'] = self.normalize_position_stat(predictions['overall_average'].dropna(), reverse=False)
+        else:
+            predictions['overall_avg_score'] = pd.Series(0.0, index=predictions.index)
+        
         # Fill NaN values in scores with 0
-        for col in ['pattern_score', 'center_score', 'length_score', 'overall_score']:
+        for col in ['pattern_score', 'center_score', 'length_score', 'overall_score',
+                    'pattern_avg_score', 'center_avg_score', 'length_avg_score', 'overall_avg_score']:
             predictions[col] = predictions[col].fillna(0.0)
         
-        # Apply weights to each factor
+        # Apply weights to each factor - MODIFIED: Reduce position weight, increase average score weight
         weights = {
-            'pattern': 0.35,  # 35% pattern
-            'center': 0.35,   # 35% center
-            'length': 0.20,   # 20% similar length
-            'overall': 0.10   # 10% overall
+            'pattern_position': 0.2,  # Reduced from 0.35
+            'pattern_average': 0.15,  # New weight for average score
+            'center_position': 0.2,   # Reduced from 0.35
+            'center_average': 0.15,   # New weight for average score
+            'length_position': 0.1,   # Reduced from 0.20
+            'length_average': 0.1,    # New weight for average score
+            'overall_position': 0.05, # Reduced from 0.10
+            'overall_average': 0.05   # New weight for average score
         }
         
         # Calculate weighted scores based on experience
         # If a bowler has no experience in a category, that weight is redistributed
-        predictions['weighted_pattern'] = predictions['pattern_score'] * predictions['pattern_exp'] * weights['pattern']
-        predictions['weighted_center'] = predictions['center_score'] * predictions['center_exp'] * weights['center']
-        predictions['weighted_length'] = predictions['length_score'] * predictions['length_exp'] * weights['length']
-        predictions['weighted_overall'] = predictions['overall_score'] * weights['overall']  # Always have overall data
+        predictions['weighted_pattern_pos'] = predictions['pattern_score'] * predictions['pattern_exp'] * weights['pattern_position']
+        predictions['weighted_pattern_avg'] = predictions['pattern_avg_score'] * predictions['pattern_exp'] * weights['pattern_average']
+        predictions['weighted_center_pos'] = predictions['center_score'] * predictions['center_exp'] * weights['center_position']
+        predictions['weighted_center_avg'] = predictions['center_avg_score'] * predictions['center_exp'] * weights['center_average']
+        predictions['weighted_length_pos'] = predictions['length_score'] * predictions['length_exp'] * weights['length_position']
+        predictions['weighted_length_avg'] = predictions['length_avg_score'] * predictions['length_exp'] * weights['length_average']
+        predictions['weighted_overall_pos'] = predictions['overall_score'] * weights['overall_position']  # Always have overall data
+        predictions['weighted_overall_avg'] = predictions['overall_avg_score'] * weights['overall_average']  # Always have overall data
         
         # Get total applied weight
         predictions['total_weight'] = (
-            (predictions['pattern_exp'] > 0) * weights['pattern'] +
-            (predictions['center_exp'] > 0) * weights['center'] +
-            (predictions['length_exp'] > 0) * weights['length'] +
-            weights['overall']  # Always include overall weight
+            (predictions['pattern_exp'] > 0) * (weights['pattern_position'] + weights['pattern_average']) +
+            (predictions['center_exp'] > 0) * (weights['center_position'] + weights['center_average']) +
+            (predictions['length_exp'] > 0) * (weights['length_position'] + weights['length_average']) +
+            (weights['overall_position'] + weights['overall_average'])  # Always include overall weights
         )
         
         # Total score normalized by applied weights
         predictions['total_score'] = (
-            predictions['weighted_pattern'] + 
-            predictions['weighted_center'] + 
-            predictions['weighted_length'] + 
-            predictions['weighted_overall']
+            predictions['weighted_pattern_pos'] + 
+            predictions['weighted_pattern_avg'] + 
+            predictions['weighted_center_pos'] + 
+            predictions['weighted_center_avg'] + 
+            predictions['weighted_length_pos'] + 
+            predictions['weighted_length_avg'] + 
+            predictions['weighted_overall_pos'] + 
+            predictions['weighted_overall_avg']
         ) / predictions['total_weight'].replace(0, 1.0)  # Avoid division by zero
         
         # Clean up NaN values (if a bowler has no data in any category)
@@ -653,10 +697,10 @@ class PBAAnalyzer:
         
         # Calculate a confidence score based on data availability
         predictions['confidence'] = (
-            predictions['pattern_exp'] * weights['pattern'] +
-            predictions['center_exp'] * weights['center'] +
-            predictions['length_exp'] * weights['length'] +
-            (predictions['overall_exp'] * weights['overall'])
+            (predictions['pattern_exp'] * (weights['pattern_position'] + weights['pattern_average'])) +
+            (predictions['center_exp'] * (weights['center_position'] + weights['center_average'])) +
+            (predictions['length_exp'] * (weights['length_position'] + weights['length_average'])) +
+            (predictions['overall_exp'] * (weights['overall_position'] + weights['overall_average']))
         ) / sum(weights.values())
         
         # Sort by total score
