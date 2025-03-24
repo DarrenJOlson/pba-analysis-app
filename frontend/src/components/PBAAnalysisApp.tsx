@@ -563,7 +563,7 @@ const PBAAnalysisApp: React.FC = () => {
                   <YAxis 
                     yAxisId="left" 
                     orientation="left"
-                    domain={[0, (dataMax) => Math.ceil(dataMax / 1000) * 1000]}
+                    domain={[0, (dataMax: number) => Math.ceil(dataMax / 1000) * 1000]}
                     tickFormatter={(value) => `$${value / 1000}k`}
                   />
                   <Tooltip 
@@ -573,18 +573,26 @@ const PBAAnalysisApp: React.FC = () => {
                           <div className="bg-white p-2 border border-gray-300 shadow-md">
                             <p className="font-semibold">{label}</p>
                             {payload.map((entry, index) => {
-                              let value = entry.value;
-            
-                              // Format earnings with commas and exactly 2 decimal places
-                              if (entry.dataKey === "avgEarnings") {
-                                value = `$${parseFloat(entry.value).toLocaleString('en-US', {
+                              // Safely handle the value
+                              let displayValue: string;
+                              
+                              // Check if value exists
+                              if (entry.value === undefined || entry.value === null) {
+                                displayValue = "N/A";
+                              } else if (entry.dataKey === "avgEarnings" && typeof entry.value === 'number') {
+                                // For earnings, format as currency
+                                displayValue = `$${entry.value.toLocaleString('en-US', {
                                   minimumFractionDigits: 2,
                                   maximumFractionDigits: 2
                                 })}`;
+                              } else {
+                                // For other data, convert to string safely
+                                displayValue = String(entry.value);
                               }
+                              
                               return (
                                 <p key={`item-${index}`} style={{ color: entry.color }}>
-                                  {entry.name}: {value}
+                                  {entry.name}: {displayValue}
                                 </p>
                               );
                             })}
